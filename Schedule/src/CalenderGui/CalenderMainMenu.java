@@ -6,7 +6,7 @@ public class CalenderMainMenu extends JFrame{
 	WeekGui[] weekGuis;
 
 	public CalenderMainMenu(int daysInMonth, int monthStartsOn) {
-		setSize(700,350);
+		setSize(300,300);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
@@ -15,11 +15,12 @@ public class CalenderMainMenu extends JFrame{
 		int numberOfWeeks =efectiveDaysInMonth/7;
 		//Rounds up if needed
 		if (efectiveDaysInMonth % 7 !=0){
-			numberOfWeeks++;
+			numberOfWeeks ++;
 			
 		}
 		//Determine how many week to put in array
 		weekGuis = new WeekGui[numberOfWeeks];
+		
 		//week first initiation
 		weekGuis[0] = new WeekGui(0,(7-monthStartsOn));
 		

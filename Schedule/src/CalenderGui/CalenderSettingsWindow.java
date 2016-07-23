@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 
 public class CalenderSettingsWindow extends JFrame{
 	CalenderGuiControl calenderGuiControl;
+	JFrame window = this;
 	JLabel numberOfDaysLabel = new JLabel("NumberOfDaysInMonth");
 	JTextField numberOfDaysTextField = new JTextField();
 	JComboBox comboBox = new JComboBox();
@@ -67,7 +68,7 @@ public class CalenderSettingsWindow extends JFrame{
 				}
 				try{
 					Integer daysInMonth = Integer.valueOf(numberOfDaysTextField.getText());
-				
+				window.dispose();
 				calenderGuiControl.startCalenderMainMenu(daysInMonth, monthStartsOn);
 			}catch(NumberFormatException nfe){
 				
