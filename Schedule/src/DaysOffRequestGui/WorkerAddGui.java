@@ -42,7 +42,8 @@ public class WorkerAddGui extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (name.getText() != "name"){
+				//the .equals has to be used because it doesn't like the == apparently
+				if (!(name.getText().equals("name")) ){
 					
 					Worker worker = new Worker(name.getText());
 					workerGuiControl.workers.add(worker);
@@ -64,7 +65,7 @@ public class WorkerAddGui extends JFrame{
 				}
 			}
 		});
-		doneButton.addActionListener(new ActionListener(){
+		cancelButton.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
