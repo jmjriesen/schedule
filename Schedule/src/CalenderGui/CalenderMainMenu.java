@@ -1,10 +1,22 @@
 package CalenderGui;
 
-public class CalenderMainMenu {
+import javax.swing.JFrame;
+
+public class CalenderMainMenu extends JFrame{
+	
 
 	public CalenderMainMenu(int daysInMonth, int monthStartsOn) {
-		System.out.println(daysInMonth);
-		System.out.println(monthStartsOn);
+		setSize(700,350);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+		// Determines how many weeks are in the month
+		int numberOfWeeks =(daysInMonth+monthStartsOn)/7;
+		//Rounds up if needed
+		if ((daysInMonth+monthStartsOn) % 7 !=0){
+			numberOfWeeks++;
+			
+		}
+		System.out.println(numberOfWeeks);
 	}
 
 }
