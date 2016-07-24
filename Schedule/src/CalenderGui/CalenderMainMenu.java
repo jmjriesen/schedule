@@ -9,7 +9,12 @@ public class CalenderMainMenu extends JFrame{
 		setSize(300,300);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-		
+		createWeeks(daysInMonth,monthStartsOn);
+
+
+
+	}
+	private void createWeeks(int daysInMonth,int monthStartsOn){
 		// Determines how many weeks are in the month
 		int efectiveDaysInMonth = daysInMonth+monthStartsOn;
 		int numberOfWeeks =efectiveDaysInMonth/7;
@@ -40,9 +45,7 @@ public class CalenderMainMenu extends JFrame{
 		}else{//less then seven days in the week
 			weekGuis[weekGuis.length-1] = new WeekGui(weekGuis.length,daysLeftOver);
 		}
-
-
-
+		
 	}
 
 }

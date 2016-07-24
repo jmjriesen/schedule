@@ -68,11 +68,11 @@ public class CalenderSettingsWindow extends JFrame{
 				}
 				try{
 					Integer daysInMonth = Integer.valueOf(numberOfDaysTextField.getText());
-				window.dispose();
-				calenderGuiControl.startCalenderMainMenu(daysInMonth, monthStartsOn);
-			}catch(NumberFormatException nfe){
-				
-			}
+					window.dispose();
+					calenderGuiControl.startCalenderMainMenu(daysInMonth, monthStartsOn);
+				}catch(NumberFormatException nfe){
+
+				}
 			}
 
 		});
