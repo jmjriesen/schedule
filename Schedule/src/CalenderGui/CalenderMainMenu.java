@@ -1,5 +1,7 @@
 package CalenderGui;
 
+import java.awt.GridLayout;
+
 import javax.swing.JFrame;
 
 public class CalenderMainMenu extends JFrame{
@@ -9,8 +11,11 @@ public class CalenderMainMenu extends JFrame{
 		setSize(300,300);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-		createWeeks(daysInMonth,monthStartsOn);
-
+		createWeeks (daysInMonth,monthStartsOn);
+		setLayout(new GridLayout(weekGuis.length,1));
+		for (WeekGui week : weekGuis){
+			add(week.calendarPane);
+		}
 
 
 	}
