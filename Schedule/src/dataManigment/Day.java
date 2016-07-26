@@ -6,15 +6,14 @@ import java.util.PriorityQueue;
 
 
 public class Day {
-	int date;
-	Worker[] rotation = new Worker[3];
-	
-	public Day(int Date){
-		date = Date;
-		
-		
-		
-		
+
+
+	private int date;
+	private Worker[] rotation = new Worker[3];
+
+
+	public Day(int date){
+		this.date = date;
 	}
 	
 	
@@ -31,29 +30,25 @@ public class Day {
 			fillSlot(slotIndex,heap);
 		}
 	}
-	void fillSlot(int slotIndex,PriorityQueue<Worker> heap){
+
+
+
+	void fillSlot(int slotIndex, PriorityQueue<Worker> heap) {
 		Worker tempWorker = heap.poll();
-		
-		
-		if (tempWorker!= null){
-			
-			if (tempWorker.canWork(date)){
+
+		if (tempWorker != null) {
+
+			if (tempWorker.canWork(date)) {
 				rotation[slotIndex] = tempWorker;
 				tempWorker.willWork(date);
-				
 
-			}else{
-				fillSlot(slotIndex,heap);
+			} else {
+				fillSlot(slotIndex, heap);
 			}
 			heap.add(tempWorker);
-		}else {
+		} else {
 			rotation[slotIndex] = null;
 		}
-		
-		
-	
-		
-				}
-	
+	}
 
 }

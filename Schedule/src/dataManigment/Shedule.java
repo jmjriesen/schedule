@@ -2,6 +2,7 @@ package dataManigment;
 
 
 public class Shedule {
+
 	Day[] days = new Day[4];
 	java.util.List<Worker> staff;
 
@@ -18,6 +19,9 @@ public class Shedule {
 
 		}
 	}
+
+
+
 	/**
 	 * tells each day in 'days' to fill out the rotation
 	 */
@@ -26,10 +30,12 @@ public class Shedule {
 			day.fillOutDay(staff);
 		}
 	}
+
+
+
 	/**
 	 * prints to console daynumber and worker symbols for each day
 	 */
-	
 	void printShedual(){
 		int dayNumber = 0;
 		for(Day day:days){
@@ -45,8 +51,5 @@ public class Shedule {
 			
 		}
 	}
-	
-
-
 
 }

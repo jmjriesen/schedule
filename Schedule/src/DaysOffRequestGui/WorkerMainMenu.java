@@ -18,13 +18,13 @@ import dataManigment.WorkerInfoHandaler;
 
 public class WorkerMainMenu extends JFrame{
 
-	// creates buttons for adding workers saving and proseding on
-	//to make the skedual
+	// creates buttons for adding workers saving and processing on
+	//to make the schedule
 	JButton addWorkerButton = new JButton("Add worker");
 	JButton saveButton = new JButton("save");
 	JButton nextButton = new JButton("Next");
 
-	//needed for butons to interact with this windo
+	//needed for buttons to interact with this window
 	JFrame window = this;
 
 	//link to control gui
@@ -64,7 +64,7 @@ public class WorkerMainMenu extends JFrame{
 			
 			JButton editButton = new JButton("edit");
 			add(editButton);
-			//assines button lisener that starts the edit window
+			//assines button listener that starts the edit window
 			editButton.addActionListener(new ActionListener(){
 
 				@Override
@@ -77,14 +77,12 @@ public class WorkerMainMenu extends JFrame{
 			
 		}
 		
-		// palcing buttons not relevent to a spusific worker
+		// placing buttons not relevant to a specific worker
 		add(addWorkerButton);
 		add(saveButton);
 		add(nextButton);
 		addButtonActions();
-
-
-
+		pack(); //needed to display properly
 	}
 
 /**
@@ -101,7 +99,7 @@ public class WorkerMainMenu extends JFrame{
 				workerGuiControl.startWorkerAddGui();
 			}
 		});
-		//relays the comand to save to the workerGuiControl
+		//relays the command to save to the workerGuiControl
 		saveButton.addActionListener(new ActionListener(){
 
 			@Override
