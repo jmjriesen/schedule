@@ -8,7 +8,7 @@ public class CalenderMainMenu extends JFrame{
 	WeekGui[] weekGuis;
 
 	public CalenderMainMenu(int daysInMonth, int monthStartsOn) {
-		setSize(300,300);
+		setSize(600,300);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		createWeeks (daysInMonth,monthStartsOn);
@@ -32,25 +32,17 @@ public class CalenderMainMenu extends JFrame{
 		//Determine how many week to put in array
 		weekGuis = new WeekGui[numberOfWeeks];
 		
-		//week first initiation
-		weekGuis[0] = new WeekGui(0,(7-monthStartsOn));
-		
-		//constructs all the weeks in the middel of the month
-		for(int i= 1; i<numberOfWeeks-1;i++){
-			weekGuis[i] = new WeekGui(i);
-
-
+		weekGuis[0] = new WeekGui();
+		int lastWeekMade = 0;
+		int lastDayMade = weekGuis[0].makeDays(monthStartsOn);
+		while(lastDayMade < daysInMonth && lastWeekMade<weekGuis.length-1){
+			weekGuis[lastWeekMade + 1] = new WeekGui();
+			lastDayMade = weekGuis[lastWeekMade +1].makeDays(lastDayMade+1,daysInMonth);
+			System.out.println(lastDayMade);
+			lastWeekMade ++;
+			
 		}
-		//lastWeek days initiontion
 
-		//days in days remaining after full weeks
-		int daysLeftOver = efectiveDaysInMonth%7;
-		
-		if (daysLeftOver ==0){//seven days in the week
-			weekGuis[weekGuis.length-1] = new WeekGui(weekGuis.length-1);
-		}else{//less then seven days in the week
-			weekGuis[weekGuis.length-1] = new WeekGui(weekGuis.length -1,daysLeftOver);
-		}
 		
 	}
 
