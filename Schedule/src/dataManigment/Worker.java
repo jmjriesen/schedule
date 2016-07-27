@@ -8,8 +8,8 @@ import java.util.List;
 public class Worker implements Comparable {
 
 	private String symbol;
-	private java.util.List<Integer> requestedOff = new ArrayList<Integer>();
-	public java.util.List<Integer> working = new ArrayList<Integer>();
+	private List<Integer> requestedOff = new ArrayList<Integer>();
+	public List<Integer> working = new ArrayList<Integer>();
 	
 
 	/**
@@ -43,7 +43,6 @@ public class Worker implements Comparable {
 		for(int day : days){
 			requestedOff.add(day);
 		}
-		
 	}
 
 
@@ -52,21 +51,27 @@ public class Worker implements Comparable {
 		working.add(date);
 	}
 
-
+	/**
+	 * Get the list of days this worker is currently working
+	 * @return
+     */
+	public List<Integer> getDaysWorking(){
+		return working;
+	}
 
 	/**
 	 * cheeks date against days requested off and days already working
 	 * @param date
-	 * @return true if avalible
+	 * @return true if available
 	 */
 	boolean canWork(int date){
 		boolean can = true;
-		for(int day : requestedOff){
+		for (int day : requestedOff){
 			if (day == date){
 				can = false;
 			}
 		}
-		for(int day : working){
+		for (int day : working){
 			if (day == date){
 				can = false;
 			}

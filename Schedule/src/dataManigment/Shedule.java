@@ -38,10 +38,10 @@ public class Shedule {
 	 */
 	void printShedual(){
 		int dayNumber = 0;
-		for(Day day:days){
+		for(Day day : days){
 			System.out.println("Day"+ dayNumber);
 
-			for (Worker worker: day.rotation){
+			for (Worker worker : day.getRotation()){
 				if (worker !=null){
 					System.out.print(worker.getSymbol());
 				}

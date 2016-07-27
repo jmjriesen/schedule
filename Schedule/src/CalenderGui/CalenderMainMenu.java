@@ -20,22 +20,22 @@ public class CalenderMainMenu extends JFrame{
 
 
 	}
-	private void createWeeks(int daysInMonth,int monthStartsOn){
+	private void createWeeks(int daysInMonth, int monthStartsOn){
 		// Determines how many weeks are in the month
-		int efectiveDaysInMonth = daysInMonth+monthStartsOn;
-		int numberOfWeeks = efectiveDaysInMonth/7;
+		int efectiveDaysInMonth = daysInMonth + monthStartsOn;
+		int numberOfWeeks = efectiveDaysInMonth / 7;
 		//Rounds up if needed
 		if (efectiveDaysInMonth % 7 !=0){
-			numberOfWeeks ++;
-			
+			numberOfWeeks++;
 		}
+
 		//Determine how many week to put in array
 		weekGuis = new WeekGui[numberOfWeeks];
 		
 		weekGuis[0] = new WeekGui();
 		int lastWeekMade = 0;
 		int lastDayMade = weekGuis[0].makeDays(monthStartsOn);
-		while(lastDayMade < daysInMonth && lastWeekMade<weekGuis.length-1){
+		while (lastDayMade < daysInMonth && lastWeekMade < weekGuis.length-1){
 			weekGuis[lastWeekMade + 1] = new WeekGui();
 			lastDayMade = weekGuis[lastWeekMade +1].makeDays(lastDayMade+1,daysInMonth);
 			System.out.println(lastDayMade);

@@ -24,8 +24,10 @@ public class WeekGui {
 		// making a buton evenchaly will lead to week wide eddit window
 		weekNumberButton = new JButton("Week");
 		calendarPane.add(weekNumberButton);
-
 	}
+
+
+
 	private void addDaysPanel() {
 		
 		
@@ -38,6 +40,8 @@ public class WeekGui {
 			}
 		}
 	}
+
+
 
 	public int makeDays(int monthStartsOn) {
 		int lastDayMade = 0;
@@ -52,17 +56,15 @@ public class WeekGui {
 
 
 
-
 	public int makeDays(int DateWeekStartsOn, int daysInMonth) {
 		
 		int numberOfDaysMade = 0;
 		int lastDayMade = DateWeekStartsOn -1;
 		
 		while(numberOfDaysMade<7 && lastDayMade < daysInMonth){
-			
 			daysGui[numberOfDaysMade] = new DayGui(lastDayMade +1);
-			lastDayMade ++;
-			numberOfDaysMade ++;
+			lastDayMade++;
+			numberOfDaysMade++;
 		}
 		addDaysPanel();
 		return lastDayMade;

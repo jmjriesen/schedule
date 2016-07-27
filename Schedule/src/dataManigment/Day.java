@@ -4,7 +4,10 @@ import java.util.Collections;
 import java.util.PriorityQueue;
 
 
-
+/**
+ * Represents an individual work day. Every day has rotations that must have
+ * workers assigned to them.
+ */
 public class Day {
 
 
@@ -12,6 +15,12 @@ public class Day {
 	private Worker[] rotation = new Worker[3];
 
 
+	/**
+	 * Create Day object with the calender day equal to the
+	 * value provided
+	 *
+	 * @param date the calender day requested
+     */
 	public Day(int date){
 		this.date = date;
 	}
@@ -32,7 +41,14 @@ public class Day {
 	}
 
 
-
+	/**
+	 * Select and assign a worker to work for a given rotation. A worker will be chosen
+	 * to work based on if they requested a day off and on if they have already worked
+	 * more hours than other workers.
+	 *
+	 * @param slotIndex index of the rotation to fill
+	 * @param heap the heap from which to select workers
+     */
 	void fillSlot(int slotIndex, PriorityQueue<Worker> heap) {
 		Worker tempWorker = heap.poll();
 
@@ -51,4 +67,13 @@ public class Day {
 		}
 	}
 
+
+	/**
+	 * Get this days rotation
+	 *
+	 * @return the days rotation
+     */
+	public Worker[] getRotation() {
+		return rotation;
+	}
 }
