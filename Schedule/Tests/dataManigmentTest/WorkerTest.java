@@ -1,9 +1,9 @@
-package dataManigment;
+package dataManigmentTest;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
-import com.sun.xml.internal.ws.api.pipe.FiberContextSwitchInterceptor;
 import org.junit.Before;
 import org.junit.Test;
+
+import dataManigment.Worker;
 
 import java.util.Arrays;
 
@@ -142,7 +142,7 @@ public class WorkerTest {
         assertEquals("symbol of multiple chars!!", test.getSymbol());
     }
 
-    @Test(expected = InvalidArgumentException.class)
+    @Test(expected = Exception.class)
     public void symbol_emptyString(){
         Worker test = new Worker("");
     }

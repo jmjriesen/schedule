@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class Worker implements Comparable {
+public class Worker implements Comparable<Worker> {
 
 	private String symbol;
 	private List<Integer> requestedOff = new ArrayList<Integer>();
@@ -39,7 +39,7 @@ public class Worker implements Comparable {
 	 * adds all days in days to requested days off
 	 * @param days
 	 */
-	void requestOff(int[] days){
+	public void requestOff(int[] days){
 		for(int day : days){
 			requestedOff.add(day);
 		}
@@ -47,7 +47,7 @@ public class Worker implements Comparable {
 
 
 
-	void willWork(int date){
+	public void willWork(int date){
 		working.add(date);
 	}
 
@@ -64,7 +64,7 @@ public class Worker implements Comparable {
 	 * @param date
 	 * @return true if available
 	 */
-	boolean canWork(int date){
+	public boolean canWork(int date){
 		boolean can = true;
 		for (int day : requestedOff){
 			if (day == date){
@@ -104,9 +104,8 @@ public class Worker implements Comparable {
 
 
 	@Override
-	public int compareTo(Object arg0) {
-		Worker arg = (Worker) arg0;
-		return this.working.size()-arg.working.size();
+	public int compareTo(Worker arg0) {
+		return this.working.size()-arg0.working.size();
 	}
 
 

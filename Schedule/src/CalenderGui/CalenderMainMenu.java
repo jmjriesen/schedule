@@ -4,14 +4,18 @@ import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 
+import dataManigment.Month;
+import dataManigment.Week;
+
 public class CalenderMainMenu extends JFrame{
 	WeekGui[] weekGuis;
-
+	Month month;
 	public CalenderMainMenu(int daysInMonth, int monthStartsOn) {
 		setSize(600,300);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-		createWeeks (daysInMonth,monthStartsOn);
+		//month.createWeeks(daysInMonth,monthStartsOn);
+		createWeeks(daysInMonth,monthStartsOn);
 		setLayout(new GridLayout(weekGuis.length,1));
 		
 		for (WeekGui week : weekGuis){
@@ -19,8 +23,7 @@ public class CalenderMainMenu extends JFrame{
 		}
 
 
-	}
-	private void createWeeks(int daysInMonth, int monthStartsOn){
+	}private void createWeeks(int daysInMonth, int monthStartsOn){
 		// Determines how many weeks are in the month
 		int efectiveDaysInMonth = daysInMonth + monthStartsOn;
 		int numberOfWeeks = efectiveDaysInMonth / 7;
@@ -42,6 +45,7 @@ public class CalenderMainMenu extends JFrame{
 			lastWeekMade ++;
 			
 		}
+	
 
 		
 	}
