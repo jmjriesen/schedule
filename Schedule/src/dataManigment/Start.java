@@ -27,10 +27,6 @@ public class Start {
 		july.printShedual();
 		}
 		 
-		
-		
-		
-		 
 				 
 	}
 

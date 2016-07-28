@@ -7,17 +7,20 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import dataManigment.Day;
+import dataManigment.Week;
+
 public class WeekGui {
-	
+	Week week;
 	//all days in this week week
-	DayGui[] daysGui = new DayGui[7];
+	public DayGui[] daysGui = new DayGui[7];
 	
 	JPanel calendarPane = new JPanel();
 	GridLayout calendarLayout = new GridLayout(1,8);
 	JButton weekNumberButton;
 	
-	protected WeekGui() {
-		// temp variable will evenchaly be replaced by a list of days
+	public WeekGui(Week week) {
+		this.week = week;
 		
 		//panal requierd for nesting gridlayouts
 		calendarPane.setLayout(calendarLayout);
@@ -28,21 +31,21 @@ public class WeekGui {
 
 
 
-	private void addDaysPanel() {
+	public void addDaysPanel() {
 		
 		
-		for(DayGui day:daysGui){
+		for(Day day: week.days){
 			if(day==null){
 				calendarPane.add(new JLabel());
 			}else{
-				calendarPane.add(day.panel);
+				calendarPane.add(day.dayGui.panel);
 				
 			}
 		}
 	}
 
-
-
+// The creation of day guis are being moved to the day class
+/*
 	public int makeDays(int monthStartsOn) {
 		int lastDayMade = 0;
 		for (int i = 0 ;i<(7-monthStartsOn);i++){
@@ -69,4 +72,5 @@ public class WeekGui {
 		addDaysPanel();
 		return lastDayMade;
 	}
+	*/
 }

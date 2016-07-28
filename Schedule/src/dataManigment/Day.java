@@ -3,13 +3,15 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.PriorityQueue;
 
+import CalenderGui.DayGui;
+
 
 /**
  * Represents an individual work day. Every day has rotations that must have
  * workers assigned to them.
  */
 public class Day {
-
+	public DayGui dayGui;
 
 	private int date;
 	private Worker[] rotation = new Worker[3];
@@ -23,6 +25,9 @@ public class Day {
      */
 	public Day(int date){
 		this.date = date;
+		System.out.println(this.date);
+		dayGui  = new DayGui(this);
+		
 	}
 	
 	
@@ -75,5 +80,8 @@ public class Day {
      */
 	public Worker[] getRotation() {
 		return rotation;
+	}
+	public int getDate(){
+		return date;
 	}
 }

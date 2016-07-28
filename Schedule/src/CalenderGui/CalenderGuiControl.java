@@ -8,7 +8,7 @@ public class CalenderGuiControl {
 	}
 
 	protected void startCalenderMainMenu(int daysInMonth,int monthStartsOn) {
-		CalenderMainMenu calenderMainMenu = new CalenderMainMenu(daysInMonth, monthStartsOn);
+		MonthGui monthGui = new MonthGui(daysInMonth, monthStartsOn);
 		
 		
 	}

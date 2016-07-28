@@ -1,9 +1,11 @@
 package dataManigment;
 
 import CalenderGui.DayGui;
+import CalenderGui.WeekGui;
 
 public class Week {
-	Day[] days;
+	public Day[] days = new Day[7];
+	public WeekGui weekGui = new WeekGui(this);
 	
 	public int makeDays(int monthStartsOn) {
 		int lastDayMade = 0;
@@ -12,7 +14,7 @@ public class Week {
 			lastDayMade = i;
 		}
 		
-		
+		weekGui.addDaysPanel();
 		return lastDayMade+1;
 	}
 public int makeDays(int DateWeekStartsOn, int daysInMonth) {
@@ -25,7 +27,7 @@ public int makeDays(int DateWeekStartsOn, int daysInMonth) {
 			lastDayMade++;
 			numberOfDaysMade++;
 		}
-		
+		weekGui.addDaysPanel();
 		return lastDayMade;
 	}
 }
