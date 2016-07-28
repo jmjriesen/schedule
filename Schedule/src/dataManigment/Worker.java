@@ -1,23 +1,30 @@
 package dataManigment;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.sun.javaws.exceptions.InvalidArgumentException;
+
+import java.util.*;
 
 
 public class Worker implements Comparable<Worker> {
 
 	private String symbol;
-	private List<Integer> requestedOff = new ArrayList<Integer>();
-	public List<Integer> working = new ArrayList<Integer>();
-	
+	private Set<Integer> requestedOff = new TreeSet<Integer>();
+	private Set<Integer> working = new TreeSet<Integer>();
+
 
 	/**
 	 * Setts up worker's symbol
 	 * @param Symbol
 	 */
-	public Worker(String Symbol){
-		symbol = Symbol;
+	public Worker(String symbol){
+	    if (symbol == null) {
+            throw new NullPointerException("Worker symbol cannot be null");
+        }
+        else if(symbol.equals("")){
+            throw new NullPointerException("Empty String (Not really null, but close enough)");
+        }
+
+		this.symbol = symbol;
 	}
 
 
@@ -27,10 +34,9 @@ public class Worker implements Comparable<Worker> {
 	 * @param day
 	 */
 	public void requestOff(int day){
-		if(!requestedOff.contains(day)){
-			requestedOff.add(day);
-			Collections.sort(requestedOff);
-		}
+        validDateFilter(day);
+
+		requestedOff.add(day);
 	}
 
 
@@ -48,6 +54,7 @@ public class Worker implements Comparable<Worker> {
 
 
 	public void willWork(int date){
+        validDateFilter(date);
 		working.add(date);
 	}
 
@@ -55,7 +62,7 @@ public class Worker implements Comparable<Worker> {
 	 * Get the list of days this worker is currently working
 	 * @return
      */
-	public List<Integer> getDaysWorking(){
+	public Set<Integer> getDaysWorking(){
 		return working;
 	}
 
@@ -65,18 +72,12 @@ public class Worker implements Comparable<Worker> {
 	 * @return true if available
 	 */
 	public boolean canWork(int date){
-		boolean can = true;
-		for (int day : requestedOff){
-			if (day == date){
-				can = false;
-			}
-		}
-		for (int day : working){
-			if (day == date){
-				can = false;
-			}
-		}
-		return can;
+        validDateFilter(date);
+
+        if (requestedOff.contains(date) || working.contains(date)) {
+            return false;
+        }
+		return true;
 	}
 
 
@@ -86,7 +87,7 @@ public class Worker implements Comparable<Worker> {
 	 *
 	 * @return days requested off
 	 */
-	public List<Integer> getRequestedOff(){
+	public Set<Integer> getRequestedOff(){
 		return requestedOff;
 	}
 
@@ -112,4 +113,9 @@ public class Worker implements Comparable<Worker> {
 	public void clearDaysOff() {
 		requestedOff.clear();
 	}
+
+	private void validDateFilter(int date){
+	    if (date < 1 || date > 31)
+	        throw new IndexOutOfBoundsException();
+    }
 }

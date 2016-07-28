@@ -1,11 +1,10 @@
 package dataManigmentTest;
 
+import com.sun.tools.internal.ws.wsdl.document.jaxws.Exception;
+import dataManigment.Worker;
 import org.junit.Before;
 import org.junit.Test;
 
-import dataManigment.Worker;
-
-import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
@@ -32,18 +31,18 @@ public class WorkerTest {
         assertTrue(testWorker.getRequestedOff().contains(18));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = IndexOutOfBoundsException.class)
     public void requestOff_negative_date(){
         testWorker.requestOff(-1);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = IndexOutOfBoundsException.class)
     public void requestOff_date_larger_than_31(){
         testWorker.requestOff(35);
     }
 
     @Test
-    public void requestOff_array_valid() throws Exception {
+    public void requestOff_array_valid() {
         testWorker.requestOff(new int[]{3, 8, 13, 9, 2});
 
         assertTrue(testWorker.getRequestedOff().contains(3));
@@ -54,7 +53,7 @@ public class WorkerTest {
     }
 
     @Test
-    public void requestOff_empty() throws Exception {
+    public void requestOff_empty() {
         assertNotNull(testWorker.getRequestedOff());
         assertTrue(testWorker.getRequestedOff().isEmpty());
     }
@@ -78,12 +77,12 @@ public class WorkerTest {
         assertTrue(testWorker.getDaysWorking().contains(19));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = IndexOutOfBoundsException.class)
     public void willWork_negative_date(){
         testWorker.willWork(-1);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = IndexOutOfBoundsException.class)
     public void willWork_date_larger_than_31(){
         testWorker.willWork(35);
     }
@@ -113,17 +112,17 @@ public class WorkerTest {
         assertTrue(testWorker.canWork(15));
 
         assertFalse(testWorker.canWork(3));
-        assertFalse(testWorker.canWork(18));
+        assertFalse(testWorker.canWork(13));
         assertFalse(testWorker.canWork(7));
         assertFalse(testWorker.canWork(20));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = IndexOutOfBoundsException.class)
     public void canWork_negative_date(){
         testWorker.canWork(-1);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = IndexOutOfBoundsException.class)
     public void canWork_date_larger_than_31(){
         testWorker.canWork(35);
     }
@@ -132,17 +131,17 @@ public class WorkerTest {
 
     // ------------------------- Tests for symbol -------------------------
     @Test
-    public void symbol_valid() throws Exception {
+    public void symbol_valid() {
         assertEquals("@", testWorker.getSymbol());
     }
 
     @Test
-    public void symbol_multiple_chars(){
+    public void symbol_multiple_chars() {
         Worker test = new Worker("Symbol of multiple chars!!");
-        assertEquals("symbol of multiple chars!!", test.getSymbol());
+        assertEquals("Symbol of multiple chars!!", test.getSymbol());
     }
 
-    @Test(expected = Exception.class)
+    @Test(expected = java.lang.Exception.class)
     public void symbol_emptyString(){
         Worker test = new Worker("");
     }
@@ -153,14 +152,13 @@ public class WorkerTest {
     }
 
 
-
     @Test
-    public void compareTo() throws Exception {
+    public void compareTo() {
 
     }
 
     @Test
-    public void clearDaysOff() throws Exception {
+    public void clearDaysOff() {
 
     }
 

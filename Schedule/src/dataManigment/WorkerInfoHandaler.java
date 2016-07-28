@@ -60,8 +60,8 @@ public class WorkerInfoHandaler {
 				for(Worker worker : workers){
 					output += worker.getSymbol();
 					output += ",";
-					for(int i = 0; i< worker.getRequestedOff().size(); i++){
-						output += Integer.toString((int) worker.getRequestedOff().get(i));
+					for (int dayRequestedOff : worker.getRequestedOff()){
+						output += dayRequestedOff;
 						output += ",";
 					}
 					output +="\n";
