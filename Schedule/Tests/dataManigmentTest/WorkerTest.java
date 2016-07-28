@@ -1,6 +1,5 @@
 package dataManigmentTest;
 
-import com.sun.tools.internal.ws.wsdl.document.jaxws.Exception;
 import dataManigment.Worker;
 import org.junit.Before;
 import org.junit.Test;
