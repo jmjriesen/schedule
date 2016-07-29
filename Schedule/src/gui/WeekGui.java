@@ -1,4 +1,4 @@
-package CalenderGui;
+package gui;
 
 import java.awt.GridLayout;
 import java.awt.LayoutManager;

@@ -1,4 +1,4 @@
-package DaysOffRequestGui;
+package gui;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -7,13 +7,15 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import dataManigment.Worker;
 
 
 
-public class WorkerEditWindow extends JFrame{
+public class WorkerEditWindow{
+	private JPanel panel = new JPanel();
 	// worker being edited
 	Worker worker;
 	//labels to desplay worker information
@@ -31,22 +33,20 @@ public class WorkerEditWindow extends JFrame{
 	JButton returnButton = new JButton();
 	
 	//self reforenchal terms needed for the buttons to locat informarion
-	JFrame window = this;
-	private WorkerGuiControl workerGuiControl;
+	
+	private GuiControl guiControl;
 	/**
 	 * Creates a window that Edits a susific worker information
 	 * @param worker
 	 * @param workerGuiControl
 	 */
-	WorkerEditWindow(final Worker worker, WorkerGuiControl workerGuiControl){
+	WorkerEditWindow(final Worker worker, GuiControl guiControl){
 		this.worker = worker;
-		this.workerGuiControl = workerGuiControl;
-		//stander window setup 
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(200,200);
-		setLayout(new GridLayout(7,1));
-		setSize(200,200);
-		setVisible(true);
+		this.guiControl = guiControl;
+		
+		
+		panel.setLayout(new GridLayout(7,1));
+		
 		
 		addElements();
 		updateElements();
@@ -65,13 +65,13 @@ public class WorkerEditWindow extends JFrame{
 	 * Adds labels, and buttons to the screen
 	 */
 	void addElements(){
-		add(workerName);
-		add(daysOff);
-		add(daysOffInput);
-		add(addButton);
-		add(clearAllDays);
-		add(DELEATEButton);
-		add(returnButton);
+		panel.add(workerName);
+		panel.add(daysOff);
+		panel.add(daysOffInput);
+		panel.add(addButton);
+		panel.add(clearAllDays);
+		panel.add(DELEATEButton);
+		panel.add(returnButton);
 
 	}
 	/**
@@ -113,8 +113,8 @@ public class WorkerEditWindow extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				window.dispose();
-				workerGuiControl.startWorkerMainMenu();
+				
+				guiControl.startWorkerMainMenu();
 
 
 
@@ -126,11 +126,14 @@ public class WorkerEditWindow extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				workerGuiControl.workers.remove(worker);
+				guiControl.workers.remove(worker);
 				returnButton.doClick();
 			}
 			
 		});
 		}
+	JPanel getPanel(){
+		return panel;
+	}
 	}
 

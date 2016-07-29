@@ -1,8 +1,10 @@
 package dataManigment;
 
+import gui.GuiControl;
+import gui.WorkerMainMenu;
+
 import java.util.List;
-import DaysOffRequestGui.WorkerMainMenu;
-import DaysOffRequestGui.WorkerGuiControl;
+
 
 
 
@@ -15,7 +17,7 @@ public class Start {
 		if (workingOnGUI){
 		
 			
-			WorkerGuiControl gui = new WorkerGuiControl();
+			GuiControl gui = new GuiControl();
 
 			
 			

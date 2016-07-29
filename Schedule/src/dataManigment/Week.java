@@ -1,7 +1,7 @@
 package dataManigment;
 
-import CalenderGui.DayGui;
-import CalenderGui.WeekGui;
+import gui.DayGui;
+import gui.WeekGui;
 
 public class Week {
 	private Day[] days = new Day[7];

@@ -1,4 +1,4 @@
-package CalenderGui;
+package gui;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -8,23 +8,23 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 
-public class CalenderSettingsWindow extends JFrame{
-	CalenderGuiControl calenderGuiControl;
-	JFrame window = this;
+public class CalenderSettingsWindow{
+	GuiControl guiControl;
+	
 	JLabel numberOfDaysLabel = new JLabel("NumberOfDaysInMonth");
 	JTextField numberOfDaysTextField = new JTextField();
 	JComboBox comboBox = new JComboBox();
 	JButton nextButton = new JButton("next");
+	private JPanel panel = new JPanel();
 	
-	protected CalenderSettingsWindow(final CalenderGuiControl calenderGuiControl) {
-		this.calenderGuiControl = calenderGuiControl;
-		setSize(400,100);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
-		setLayout(new GridLayout(2,1));
+	protected CalenderSettingsWindow(final GuiControl guiControl) {
+		this.guiControl = guiControl;
+		
+		panel.setLayout(new GridLayout(2,1));
 		
 		
 		comboBox.addItem("Sunday");
@@ -68,8 +68,7 @@ public class CalenderSettingsWindow extends JFrame{
 				}
 				try{
 					Integer daysInMonth = Integer.valueOf(numberOfDaysTextField.getText());
-					window.dispose();
-					calenderGuiControl.startCalenderMainMenu(daysInMonth, monthStartsOn);
+					guiControl.startCalenderMainMenu(daysInMonth, monthStartsOn);
 				}
 				catch(NumberFormatException nfe){
 
@@ -77,12 +76,15 @@ public class CalenderSettingsWindow extends JFrame{
 			}
 
 		});
-		add(numberOfDaysLabel);
-		add(numberOfDaysTextField);
-		add(comboBox);
-		add(nextButton);
+		panel.add(numberOfDaysLabel);
+		panel.add(numberOfDaysTextField);
+		panel.add(comboBox);
+		panel.add(nextButton);
 		
 		
+	}
+	JPanel getPanel(){
+		return panel;
 	}
 
 }

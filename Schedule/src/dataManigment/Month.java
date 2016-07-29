@@ -1,6 +1,6 @@
 package dataManigment;
 
-import CalenderGui.WeekGui;
+import gui.WeekGui;
 
 public class Month {
 	public Week[] weeks;

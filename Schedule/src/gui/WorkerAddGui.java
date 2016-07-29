@@ -1,4 +1,4 @@
-package DaysOffRequestGui;
+package gui;
 
 import java.awt.GridLayout;
 
@@ -8,30 +8,29 @@ import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import dataManigment.Worker;
 
-public class WorkerAddGui extends JFrame{
-	JFrame window = this;
-
+public class WorkerAddGui{
+	private JPanel panel = new JPanel();
+	
 	private JTextField name = new JTextField("name");
 	private JTextField requestDaysOff = new JTextField("Days off");
 	private JButton doneButton = new JButton("done");
 	private JButton cancelButton = new JButton("cancel");
-	private WorkerGuiControl workerGuiControl;
+	private GuiControl guiControl;
 
-	WorkerAddGui(WorkerGuiControl workerGuiControl){
-		this.workerGuiControl = workerGuiControl;
-		setSize(400,200);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setVisible(true);
-		setLayout(new GridLayout(4,1));
+	WorkerAddGui(GuiControl guiControl){
+		this.guiControl = guiControl;
+		
+		panel.setLayout(new GridLayout(4,1));
 
-		add(name);
-		add(requestDaysOff);
-		add(doneButton);
-		add(cancelButton);
+		panel.add(name);
+		panel.add(requestDaysOff);
+		panel.add(doneButton);
+		panel.add(cancelButton);
 
 		addButtonActions();
 
@@ -46,7 +45,7 @@ public class WorkerAddGui extends JFrame{
 				if (!(name.getText().equals("name")) ){
 					
 					Worker worker = new Worker(name.getText());
-					workerGuiControl.workers.add(worker);
+					guiControl.workers.add(worker);
 					
 					String userInput = requestDaysOff.getText();
 					String [] splitArray = userInput.split(",");
@@ -59,8 +58,7 @@ public class WorkerAddGui extends JFrame{
 						}
 					}
 
-					window.dispose();
-					workerGuiControl.startWorkerMainMenu();					
+					guiControl.startWorkerMainMenu();					
 
 				}
 			}
@@ -69,11 +67,13 @@ public class WorkerAddGui extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				window.dispose();
-				workerGuiControl.startWorkerMainMenu();
+				guiControl.startWorkerMainMenu();
 
 			}
 		});
 
+	}
+	JPanel getPanel(){
+		return panel;
 	}
 }
