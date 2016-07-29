@@ -6,9 +6,7 @@ public class CalenderGuiControl extends JFrame{
 	public CalenderGuiControl(){
 		setSize(600,300);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		setVisible(true);
-		
 		startCalenderSettingsWindow();
 	}
 
