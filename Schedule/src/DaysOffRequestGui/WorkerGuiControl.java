@@ -21,8 +21,6 @@ public class WorkerGuiControl {
 		workers = handaler.readInStaff();
 		// deploy workerMainMenu
 		startWorkerMainMenu();
-		
-		
 	}
 	
 	/*
