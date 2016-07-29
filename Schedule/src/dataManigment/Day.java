@@ -11,7 +11,7 @@ import CalenderGui.DayGui;
  * workers assigned to them.
  */
 public class Day {
-	public DayGui dayGui;
+	private DayGui dayGui;
 
 	private int date;
 	private Worker[] rotation = new Worker[3];
@@ -25,7 +25,6 @@ public class Day {
      */
 	public Day(int date){
 		this.date = date;
-		System.out.println(this.date);
 		dayGui  = new DayGui(this);
 		
 	}
@@ -83,5 +82,8 @@ public class Day {
 	}
 	public int getDate(){
 		return date;
+	}
+	public DayGui getDayGui(){
+		return dayGui;
 	}
 }

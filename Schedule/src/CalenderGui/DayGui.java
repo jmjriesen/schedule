@@ -6,14 +6,24 @@ import javax.swing.JPanel;
 import dataManigment.Day;
 
 public class DayGui {
-	JPanel panel;
-	JButton editButton;
+	private JPanel thumbnailPanel;
+	private JButton thumbnailEditButton;
+	private JPanel editDayPanel;
+	
 	public DayGui(Day day){
-		panel = new JPanel();
-		editButton = new JButton();
-		System.out.println(day.getDate());
-		editButton.setText(Integer.toString(day.getDate()));
-		panel.add(editButton);
+		//inichalis new JPanel and JButton
+		thumbnailPanel = new JPanel();
+		thumbnailEditButton = new JButton();
+		//sets the button up and adds it to the panel
+		thumbnailEditButton.setText(Integer.toString(day.getDate()));
+		thumbnailPanel.add(thumbnailEditButton);
 	}
-
+	
+	//get statement
+	JPanel getThumbnailPanel(){
+		return thumbnailPanel;
+		}
+	JPanel getEditDayPanel(){
+	return editDayPanel;
+	}
 }

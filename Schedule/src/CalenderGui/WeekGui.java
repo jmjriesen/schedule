@@ -15,62 +15,33 @@ public class WeekGui {
 	//all days in this week week
 	public DayGui[] daysGui = new DayGui[7];
 	
-	JPanel calendarPane = new JPanel();
-	GridLayout calendarLayout = new GridLayout(1,8);
-	JButton weekNumberButton;
+	private JPanel thumbnailPanel = new JPanel();
+	private GridLayout thumbnailGridLayout = new GridLayout(1,8);
+	private JButton thumbnailEditButton;
+	
+	
 	
 	public WeekGui(Week week) {
 		this.week = week;
-		
-		//panal requierd for nesting gridlayouts
-		calendarPane.setLayout(calendarLayout);
-		// making a buton evenchaly will lead to week wide eddit window
-		weekNumberButton = new JButton("Week");
-		calendarPane.add(weekNumberButton);
-	}
 
-
-
-	public void addDaysPanel() {
-		
-		
-		for(Day day: week.days){
+		//JPanal required for nesting GridLayouts
+		thumbnailPanel.setLayout(thumbnailGridLayout);
+		// making a button evenchaly will lead to week wide edit window
+		thumbnailEditButton = new JButton("Week");
+		thumbnailPanel.add(thumbnailEditButton);
+		// adds DayGuis to the panel		
+		for(Day day: week.getDays()){
 			if(day==null){
-				calendarPane.add(new JLabel());
+				thumbnailPanel.add(new JLabel());
 			}else{
-				calendarPane.add(day.dayGui.panel);
-				
+				thumbnailPanel.add(day.getDayGui().getThumbnailPanel());
+
 			}
 		}
 	}
-
-// The creation of day guis are being moved to the day class
-/*
-	public int makeDays(int monthStartsOn) {
-		int lastDayMade = 0;
-		for (int i = 0 ;i<(7-monthStartsOn);i++){
-			daysGui[7-(i+1)] = new DayGui(7-(monthStartsOn+i));
-			lastDayMade = i;
-		}
-		addDaysPanel();
-		
-		return lastDayMade+1;
+	JPanel getThumbnailPanel(){
+		return thumbnailPanel;
 	}
 
 
-
-	public int makeDays(int DateWeekStartsOn, int daysInMonth) {
-		
-		int numberOfDaysMade = 0;
-		int lastDayMade = DateWeekStartsOn -1;
-		
-		while(numberOfDaysMade<7 && lastDayMade < daysInMonth){
-			daysGui[numberOfDaysMade] = new DayGui(lastDayMade +1);
-			lastDayMade++;
-			numberOfDaysMade++;
-		}
-		addDaysPanel();
-		return lastDayMade;
-	}
-	*/
 }
