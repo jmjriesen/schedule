@@ -126,7 +126,7 @@ public class WorkerEditWindow{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				guiControl.workers.remove(worker);
+				worker.remove();
 				returnButton.doClick();
 			}
 			

@@ -45,7 +45,7 @@ public class WorkerAddGui{
 				if (!(name.getText().equals("name")) ){
 					
 					Worker worker = new Worker(name.getText());
-					guiControl.workers.add(worker);
+					
 					
 					String userInput = requestDaysOff.getText();
 					String [] splitArray = userInput.split(",");

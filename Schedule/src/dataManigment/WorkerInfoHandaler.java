@@ -15,22 +15,20 @@ public class WorkerInfoHandaler {
 		
 		
 		
-		public java.util.List<Worker> readInStaff(){
+		public void readInStaff(){
 			String line;
-			java.util.List<Worker> staff = new ArrayList<Worker>();
-
+			
 		
 		try {
 			FileReader fileReader = new FileReader(fileName);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			
 			while((line = bufferedReader.readLine()) != null){
-				String[] arr = line.split(",");
-				Worker worker = new Worker(arr[0]);
-				staff.add(worker);
-				for(int i= 1; i< arr.length; i++){
-					
-					Integer dayOff = Integer.valueOf(arr[i]);
+				String[] splitString = line.split(",");
+				Worker worker = new Worker(splitString[0]);
+				
+				for(int i= 1; i< splitString.length; i++){
+					Integer dayOff = Integer.valueOf(splitString[i]);
 					worker.requestOff(dayOff);
 				}
 			}
@@ -43,12 +41,13 @@ public class WorkerInfoHandaler {
 			e.printStackTrace();
 		}
 		
-		return staff;
+		
+		
 		}
 
 
 
-		public void wrightOutStaff(List<Worker> workers) {
+		public void wrightOutStaff() {
 			// TODO Auto-generated method stub
 			try {
 				FileWriter fileWriter = new FileWriter(fileName);
@@ -57,7 +56,7 @@ public class WorkerInfoHandaler {
 
 
 
-				for(Worker worker : workers){
+				for(Worker worker : Worker.getWorkers()){
 					output += worker.getSymbol();
 					output += ",";
 					for (int dayRequestedOff : worker.getRequestedOff()){

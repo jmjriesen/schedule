@@ -11,7 +11,7 @@ import dataManigment.WorkerInfoHandaler;
 
 public class GuiControl extends JFrame{
 	// list of all workers
-	java.util.List<Worker> workers;
+	
 	// will read in workers for text fill
 	WorkerInfoHandaler handaler;
 
@@ -23,7 +23,7 @@ public class GuiControl extends JFrame{
 		// Initiates workerInfoHandaler
 		handaler = new WorkerInfoHandaler();
 		//Reads in staff from text document
-		workers = handaler.readInStaff();
+		handaler.readInStaff();
 		// deploy workerMainMenu
 		startWorkerMainMenu();
 	}
@@ -32,7 +32,7 @@ public class GuiControl extends JFrame{
 	 * staff list to a text fill for fucher use
 	 */
 	void saveStaff(){
-		handaler.wrightOutStaff(workers);
+		handaler.wrightOutStaff();
 
 	}
 	protected void startWorkerMainMenu(){

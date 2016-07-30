@@ -21,8 +21,8 @@ public class Start {
 			
 		}else{
 		 WorkerInfoHandaler handaler = new WorkerInfoHandaler();
-		 List<Worker> staff = handaler.readInStaff();
-		 Shedule july = new Shedule(staff);
+		 handaler.readInStaff();
+		 Shedule july = new Shedule();
 		july.fillOutShedual();
 		july.printShedual();
 		}

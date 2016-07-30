@@ -36,9 +36,9 @@ public class Day {
 	 * Takes fills out the rotation with workers passed to it(currently takes in order)
 	 * @param potentialWorkers well of potential worker to shedual.
 	 */
-	void fillOutDay(java.util.List<Worker> potentialWorkers){
+	void fillOutDay(){
 		//Collections.shuffle(potentialWorkers);
-		PriorityQueue<Worker> heap = new PriorityQueue<Worker>(potentialWorkers);
+		PriorityQueue<Worker> heap = new PriorityQueue<Worker>(Worker.getWorkers());
 		
 		for(int slotIndex = 0; slotIndex< rotation.length; slotIndex++){
 			fillSlot(slotIndex,heap);

@@ -4,14 +4,14 @@ package dataManigment;
 public class Shedule {
 
 	Day[] days = new Day[4];
-	java.util.List<Worker> staff;
+	
 
 	/**
 	 * makes new day instances for each day 
 	 * @param Staff well of workers
 	 */
-	public Shedule(java.util.List<Worker> Staff){
-		staff = Staff;
+	public Shedule(){
+		
 
 		for(int i = 0; i<=4 -1; i++){
 			Day day = new Day(i);
@@ -27,7 +27,7 @@ public class Shedule {
 	 */
 	void fillOutShedual(){
 		for(Day day : days){
-			day.fillOutDay(staff);
+			day.fillOutDay();
 		}
 	}
 

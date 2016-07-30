@@ -6,17 +6,30 @@ import java.util.*;
 
 public class Worker implements Comparable<Worker> {
 
+	private static Set<Worker> workers = new TreeSet<Worker>();
+	
+	/**
+	 * @return the workers
+	 */
+	public static Set<Worker> getWorkers() {
+		return workers;
+	}
+
+
 	private String symbol;
 	private Set<Integer> requestedOff = new TreeSet<Integer>();
 	private Set<Integer> working = new TreeSet<Integer>();
 
+	
 
 	/**
-	 * Setts up worker's symbol
+	 * Sets up worker's symbol
 	 * @param Symbol
 	 */
 	public Worker(String symbol){
-	    if (symbol == null) {
+		System.out.println("Start");
+		
+		if (symbol == null) {
             throw new NullPointerException("Worker symbol cannot be null");
         }
         else if(symbol.equals("")){
@@ -24,6 +37,14 @@ public class Worker implements Comparable<Worker> {
         }
 
 		this.symbol = symbol;
+		workers.add(this);
+		
+		System.out.println(symbol);
+		System.out.println(workers.size());
+		for(Worker worker: workers){
+			System.out.println(worker.getSymbol());
+		}
+		System.out.println("Stop");
 	}
 
 
@@ -117,4 +138,7 @@ public class Worker implements Comparable<Worker> {
 	    if (date < 1 || date > 31)
 	        throw new IndexOutOfBoundsException();
     }
+	public void remove(){
+		workers.remove(this);
+	}
 }

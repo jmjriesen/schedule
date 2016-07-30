@@ -44,7 +44,7 @@ public class WorkerMainMenu{
 		
 		//creats a gruid layout largenofe to encompus all worker information 
 		//and some genaral purpus buttons
-		panel.setLayout(new GridLayout(guiControl.workers.size() + 1 ,3));
+		panel.setLayout(new GridLayout(Worker.getWorkers().size() + 1 ,3));
 		
 		
 		/*
@@ -54,7 +54,7 @@ public class WorkerMainMenu{
 		 *and a button to edit the worker info
 		 * 
 		 */
-		for(final Worker worker: guiControl.workers){
+		for(final Worker worker: Worker.getWorkers()){
 					
 			
 			JLabel NameLabel = new JLabel(worker.getSymbol());
