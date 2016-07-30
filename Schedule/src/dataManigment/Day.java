@@ -38,7 +38,9 @@ public class Day {
 	 */
 	void fillOutDay(){
 		//Collections.shuffle(potentialWorkers);
-		PriorityQueue<Worker> heap = new PriorityQueue<Worker>(Worker.getWorkers());
+		PriorityQueue<Worker> heap = new PriorityQueue<>(Worker.getWorkers().size(), Worker.getDaysComparater());
+		heap.addAll(Worker.getWorkers());
+
 		
 		for(int slotIndex = 0; slotIndex< rotation.length; slotIndex++){
 			fillSlot(slotIndex,heap);

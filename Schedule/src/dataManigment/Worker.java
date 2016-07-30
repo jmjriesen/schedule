@@ -1,12 +1,14 @@
 package dataManigment;
 
 
+import com.sun.xml.internal.ws.api.pipe.FiberContextSwitchInterceptor;
+
 import java.util.*;
 
 
-public class Worker implements Comparable<Worker> {
+public class Worker {
 
-	private static Set<Worker> workers = new TreeSet<Worker>();
+	private static Set<Worker> workers = new HashSet<Worker>();
 	
 	/**
 	 * @return the workers
@@ -24,7 +26,7 @@ public class Worker implements Comparable<Worker> {
 
 	/**
 	 * Sets up worker's symbol
-	 * @param Symbol
+	 * @param symbol
 	 */
 	public Worker(String symbol){
 		System.out.println("Start");
@@ -78,6 +80,8 @@ public class Worker implements Comparable<Worker> {
 		working.add(date);
 	}
 
+
+
 	/**
 	 * Get the list of days this worker is currently working
 	 * @return
@@ -85,6 +89,8 @@ public class Worker implements Comparable<Worker> {
 	public Set<Integer> getDaysWorking(){
 		return working;
 	}
+
+
 
 	/**
 	 * cheeks date against days requested off and days already working
@@ -123,12 +129,28 @@ public class Worker implements Comparable<Worker> {
 	}
 
 
+	/**
+	 * Get comparator for comparing workers with respect to the number of
+	 * days each worker has woerked
+	 *
+	 * @return comparator for comparing workers with repect to days worked
+     */
+	static public Comparator<Worker> getDaysComparater(){
+		return new Comparator<Worker>() {
 
-	@Override
-	public int compareTo(Worker arg0) {
-		return this.working.size()-arg0.working.size();
+			/**
+			 * Compare workers with respect to the days worked
+			 *
+			 * @param wrk1 first worker to compare
+			 * @param wrk2 second worker to compare
+             * @return positive if worker 1 has worked more days, negative if worker 2 has worked more days
+             */
+			@Override
+			public int compare(Worker wrk1, Worker wrk2) {
+				return wrk1.getDaysWorking().size() - wrk2.getDaysWorking().size();
+			}
+		};
 	}
-
 
 	public void clearDaysOff() {
 		requestedOff.clear();
