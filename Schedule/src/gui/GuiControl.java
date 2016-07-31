@@ -10,12 +10,19 @@ import dataManigment.Worker;
 import dataManigment.WorkerInfoHandaler;
 
 public class GuiControl extends JFrame{
-	// list of all workers
+	private static GuiControl guiControl;
 	
 	// will read in workers for text fill
 	WorkerInfoHandaler handaler;
 
-	public GuiControl(){
+	public static GuiControl getInstence(){
+		if (guiControl == null){
+			guiControl = new GuiControl();
+		}
+		return guiControl;
+	}
+	
+	 private  GuiControl(){
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -36,7 +43,7 @@ public class GuiControl extends JFrame{
 
 	}
 	protected void startWorkerMainMenu(){
-		WorkerMainMenu workerMainMenu = new WorkerMainMenu(this);
+		WorkerMainMenu workerMainMenu = new WorkerMainMenu();
 		changePanel(workerMainMenu.getPanel());
 	}
 
@@ -46,7 +53,7 @@ public class GuiControl extends JFrame{
 	}
 
 	protected void startCalenderSettingsWindow() {
-		CalenderSettingsWindow calenderSettingsWindow = new CalenderSettingsWindow(this);
+		CalenderSettingsWindow calenderSettingsWindow = new CalenderSettingsWindow();
 		//this.removeAll();
 		changePanel(calenderSettingsWindow.getPanel());
 
@@ -58,18 +65,15 @@ public class GuiControl extends JFrame{
 		this.revalidate();
 	}
 	public void startWorkerEditWindow(Worker worker) {
-		WorkerEditWindow workerEditWindow = new WorkerEditWindow(worker,this);
+		WorkerEditWindow workerEditWindow = new WorkerEditWindow(worker);
 		changePanel(workerEditWindow.getPanel());
 		
 		
 	}
 	public void startWorkerAddGui() {
-		WorkerAddGui workerAddGui = new WorkerAddGui(this);
+		WorkerAddGui workerAddGui = new WorkerAddGui();
 		changePanel(workerAddGui.getPanel());
 		
 	}
-	public void startCalenderGui() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

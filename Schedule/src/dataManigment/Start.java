@@ -15,7 +15,7 @@ public class Start {
 		if (workingOnGUI){
 		
 			
-			GuiControl gui = new GuiControl();
+			GuiControl.getInstence();
 
 			
 			

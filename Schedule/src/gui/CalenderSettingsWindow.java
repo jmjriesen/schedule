@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 
 
 public class CalenderSettingsWindow{
-	GuiControl guiControl;
+
 	
 	JLabel numberOfDaysLabel = new JLabel("NumberOfDaysInMonth");
 	JTextField numberOfDaysTextField = new JTextField();
@@ -21,8 +21,8 @@ public class CalenderSettingsWindow{
 	JButton nextButton = new JButton("next");
 	private JPanel panel = new JPanel();
 	
-	protected CalenderSettingsWindow(final GuiControl guiControl) {
-		this.guiControl = guiControl;
+	protected CalenderSettingsWindow() {
+		
 		
 		panel.setLayout(new GridLayout(2,1));
 		
@@ -68,7 +68,7 @@ public class CalenderSettingsWindow{
 				}
 				try{
 					Integer daysInMonth = Integer.valueOf(numberOfDaysTextField.getText());
-					guiControl.startCalenderMainMenu(daysInMonth, monthStartsOn);
+					GuiControl.getInstence().startCalenderMainMenu(daysInMonth, monthStartsOn);
 				}
 				catch(NumberFormatException nfe){
 

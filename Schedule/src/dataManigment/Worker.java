@@ -1,7 +1,6 @@
 package dataManigment;
 
 
-import com.sun.xml.internal.ws.api.pipe.FiberContextSwitchInterceptor;
 
 import java.util.*;
 
@@ -29,7 +28,6 @@ public class Worker {
 	 * @param symbol
 	 */
 	public Worker(String symbol){
-		System.out.println("Start");
 		
 		if (symbol == null) {
             throw new NullPointerException("Worker symbol cannot be null");
@@ -41,12 +39,6 @@ public class Worker {
 		this.symbol = symbol;
 		workers.add(this);
 		
-		System.out.println(symbol);
-		System.out.println(workers.size());
-		for(Worker worker: workers){
-			System.out.println(worker.getSymbol());
-		}
-		System.out.println("Stop");
 	}
 
 

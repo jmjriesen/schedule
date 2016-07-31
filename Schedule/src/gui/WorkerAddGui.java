@@ -20,10 +20,10 @@ public class WorkerAddGui{
 	private JTextField requestDaysOff = new JTextField("Days off");
 	private JButton doneButton = new JButton("done");
 	private JButton cancelButton = new JButton("cancel");
-	private GuiControl guiControl;
+	
 
-	WorkerAddGui(GuiControl guiControl){
-		this.guiControl = guiControl;
+	WorkerAddGui(){
+		
 		
 		panel.setLayout(new GridLayout(4,1));
 
@@ -58,7 +58,7 @@ public class WorkerAddGui{
 						}
 					}
 
-					guiControl.startWorkerMainMenu();					
+					GuiControl.getInstence().startWorkerMainMenu();					
 
 				}
 			}
@@ -67,7 +67,7 @@ public class WorkerAddGui{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				guiControl.startWorkerMainMenu();
+				GuiControl.getInstence().startWorkerMainMenu();
 
 			}
 		});

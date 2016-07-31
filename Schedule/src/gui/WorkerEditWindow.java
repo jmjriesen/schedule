@@ -34,15 +34,15 @@ public class WorkerEditWindow{
 	
 	//self reforenchal terms needed for the buttons to locat informarion
 	
-	private GuiControl guiControl;
+	
 	/**
 	 * Creates a window that Edits a susific worker information
 	 * @param worker
 	 * @param workerGuiControl
 	 */
-	WorkerEditWindow(final Worker worker, GuiControl guiControl){
+	WorkerEditWindow(final Worker worker){
 		this.worker = worker;
-		this.guiControl = guiControl;
+		
 		
 		
 		panel.setLayout(new GridLayout(7,1));
@@ -114,7 +114,7 @@ public class WorkerEditWindow{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				guiControl.startWorkerMainMenu();
+				GuiControl.getInstence().startWorkerMainMenu();
 
 
 

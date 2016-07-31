@@ -30,16 +30,15 @@ public class WorkerMainMenu{
 	//needed for buttons to interact with this window
 	
 
-	//link to control gui
-	GuiControl guiControl;
+	
 
 
 /**
  * creats a window and populates it with worker informaion
  * @param workerGuiControl
  */
-	public WorkerMainMenu(final GuiControl guiControl){
-		this.guiControl = guiControl;
+	public WorkerMainMenu(){
+		
 		//basik window mantinice
 		
 		//creats a gruid layout largenofe to encompus all worker information 
@@ -71,7 +70,7 @@ public class WorkerMainMenu{
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					
-					guiControl.startWorkerEditWindow(worker);
+					GuiControl.getInstence().startWorkerEditWindow(worker);
 				}
 			});
 			
@@ -97,7 +96,7 @@ public class WorkerMainMenu{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				guiControl.startWorkerAddGui();
+				GuiControl.getInstence().startWorkerAddGui();
 			}
 		});
 		//relays the command to save to the workerGuiControl
@@ -105,7 +104,7 @@ public class WorkerMainMenu{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				guiControl.saveStaff();
+				GuiControl.getInstence().saveStaff();
 			}
 
 		});
@@ -115,7 +114,7 @@ public class WorkerMainMenu{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				saveButton.doClick();
-				guiControl.startCalenderSettingsWindow();
+				GuiControl.getInstence().startCalenderSettingsWindow();
 
 			}
 		});
