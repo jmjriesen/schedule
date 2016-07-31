@@ -17,20 +17,20 @@ import dataManigment.Worker;
 public class WorkerEditWindow{
 	private JPanel panel = new JPanel();
 	// worker being edited
-	Worker worker;
+	private Worker worker;
 	//labels to desplay worker information
-	JLabel workerName = new JLabel();
-	JLabel daysOff = new JLabel();
+	private JLabel workerName = new JLabel();
+	private JLabel daysOff = new JLabel();
 	//text feald to entter dayoff requests into
-	final JTextField daysOffInput = new JTextField();
+	private  final JTextField daysOffInput = new JTextField();
 	// button to add day request to worker list
-	JButton addButton = new JButton();
+	private JButton addButton = new JButton();
 	// button to clear dayoff request list
-	JButton clearAllDays = new JButton();
+	private JButton clearAllDays = new JButton();
 	// button to deleat worker
-	JButton DELEATEButton = new JButton();
+	private JButton DELEATEButton = new JButton();
 	// button to return user to a new instance of the WorkerMainGui
-	JButton returnButton = new JButton();
+	private JButton returnButton = new JButton();
 	
 	//self reforenchal terms needed for the buttons to locat informarion
 	

@@ -11,7 +11,7 @@ import java.util.List;
 
 
 public class WorkerInfoHandaler {
-		String fileName= "WorkerInfo.txt";
+	private String fileName= "WorkerInfo.txt";
 		
 		
 		

@@ -13,7 +13,7 @@ import dataManigment.Week;
 public class MonthGui {
 	WeekGui[] weekGuis;
 	Month month;
-	JPanel monthDesplay;
+	private JPanel monthDesplay;
 
 
 	public MonthGui(int daysInMonth, int monthStartsOn) {

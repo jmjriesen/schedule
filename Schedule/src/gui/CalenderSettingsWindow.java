@@ -15,10 +15,10 @@ import javax.swing.JTextField;
 public class CalenderSettingsWindow{
 
 	
-	JLabel numberOfDaysLabel = new JLabel("NumberOfDaysInMonth");
-	JTextField numberOfDaysTextField = new JTextField();
-	JComboBox comboBox = new JComboBox();
-	JButton nextButton = new JButton("next");
+	private JLabel numberOfDaysLabel = new JLabel("NumberOfDaysInMonth");
+	private JTextField numberOfDaysTextField = new JTextField();
+	private JComboBox comboBox = new JComboBox();
+	private JButton nextButton = new JButton("next");
 	private JPanel panel = new JPanel();
 	
 	protected CalenderSettingsWindow() {

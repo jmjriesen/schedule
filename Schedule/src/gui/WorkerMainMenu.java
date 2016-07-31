@@ -22,9 +22,9 @@ public class WorkerMainMenu{
 
 	// creates buttons for adding workers saving and processing on
 	//to make the schedule
-	JButton addWorkerButton = new JButton("Add worker");
-	JButton saveButton = new JButton("save");
-	JButton nextButton = new JButton("Next");
+	private JButton addWorkerButton = new JButton("Add worker");
+	private JButton saveButton = new JButton("save");
+	private JButton nextButton = new JButton("Next");
 	private JPanel panel = new JPanel();
 
 	//needed for buttons to interact with this window
