@@ -5,6 +5,10 @@ import gui.WeekGui;
 public class Month {
 	public Week[] weeks;
 
+	public Month(int daysInMonth, int monthStartsOn) {
+		this.createWeeks(daysInMonth,monthStartsOn);
+	}
+
 	public void createWeeks(int daysInMonth, int monthStartsOn){
 		// Determines how many weeks are in the month
 		int efectiveDaysInMonth = daysInMonth + monthStartsOn;

@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import dataManigment.Month;
 import dataManigment.Worker;
 import dataManigment.WorkerInfoHandaler;
 
@@ -27,12 +28,8 @@ public class GuiControl extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		setVisible(true);
-		// Initiates workerInfoHandaler
-		handaler = new WorkerInfoHandaler();
-		//Reads in staff from text document
-		handaler.readInStaff();
-		// deploy workerMainMenu
-		startWorkerMainMenu();
+		
+		
 	}
 	/*
 	 * Instructs the WorkerInfoHandeler to wright the 
@@ -42,17 +39,17 @@ public class GuiControl extends JFrame{
 		handaler.wrightOutStaff();
 
 	}
-	protected void startWorkerMainMenu(){
+	public void startWorkerMainMenu(){
 		WorkerMainMenu workerMainMenu = new WorkerMainMenu();
 		changePanel(workerMainMenu.getPanel());
 	}
 
-	protected void startCalenderMainMenu(int daysInMonth,int monthStartsOn) {
-		MonthGui monthGui = new MonthGui(daysInMonth, monthStartsOn);
+	public void startCalenderMainMenu(Month month) {
+		MonthGui monthGui = new MonthGui(month);
 		changePanel(monthGui.getMonthDesplay());
 	}
 
-	protected void startCalenderSettingsWindow() {
+	public void startCalenderSettingsWindow() {
 		CalenderSettingsWindow calenderSettingsWindow = new CalenderSettingsWindow();
 		//this.removeAll();
 		changePanel(calenderSettingsWindow.getPanel());

@@ -16,11 +16,11 @@ public class MonthGui {
 	private JPanel monthDesplay;
 
 
-	public MonthGui(int daysInMonth, int monthStartsOn) {
+	public MonthGui(Month month) {
 		
 
-		month = new Month();
-		month.createWeeks(daysInMonth,monthStartsOn);
+		this.month = month;
+		
 		
 		monthDesplay = new JPanel();
 		monthDesplay.setLayout(new GridLayout(month.weeks.length,1));

@@ -11,6 +11,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import dataManigment.Month;
+import dataManigment.Start;
+
 
 public class CalenderSettingsWindow{
 
@@ -68,9 +71,9 @@ public class CalenderSettingsWindow{
 				}
 				try{
 					Integer daysInMonth = Integer.valueOf(numberOfDaysTextField.getText());
-					GuiControl.getInstence().startCalenderMainMenu(daysInMonth, monthStartsOn);
-				}
-				catch(NumberFormatException nfe){
+					Start.createMonth(daysInMonth, monthStartsOn);
+					GuiControl.getInstence().startCalenderMainMenu(Start.getMonth());
+				}catch(NumberFormatException nfe){
 
 				}
 			}
