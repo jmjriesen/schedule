@@ -3,7 +3,10 @@ import gui.DayGui;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.PriorityQueue;
+import java.util.Set;
+import java.util.TreeSet;
 
 
 
@@ -13,8 +16,8 @@ import java.util.PriorityQueue;
  */
 public class Day {
 	private DayGui dayGui;
-
 	private int date;
+	private Set<Shift> shifts = new HashSet<Shift>();
 	private Worker[] rotation = new Worker[3];
 
 
@@ -26,7 +29,12 @@ public class Day {
      */
 	public Day(int date){
 		this.date = date;
+		
 		dayGui  = new DayGui(this);
+		this.shifts.add(new Shift("HeadGuard",2,6.5,this));
+		this.shifts.add(new Shift("lifeGuard",14,7.5,this));
+		this.shifts.add(new Shift("lifeGuard",2,5.5,this));
+		
 		
 	}
 	
@@ -36,16 +44,29 @@ public class Day {
 	 * Takes fills out the rotation with workers passed to it(currently takes in order)
 	 * @param potentialWorkers well of potential worker to shedual.
 	 */
-	void fillOutDay(){
-		//Collections.shuffle(potentialWorkers);
-		PriorityQueue<Worker> heap = new PriorityQueue<>(Worker.getWorkers().size(), Worker.getDaysComparater());
+	
+	void schedule(){
+		
+		//Passing command to the shift
+		//order chosen by heap
+		PriorityQueue<Shift> shiftHeap = new PriorityQueue<Shift>(shifts);
+		Shift tempShift = shiftHeap.poll();
+		
+		while (tempShift != null){
+			
+			tempShift.schedule();
+			tempShift = shiftHeap.poll();
+		}
+	}
+	
+		/*PriorityQueue<Worker> heap = new PriorityQueue<>(Worker.getWorkers().size(), Worker.getDaysComparater());
 		heap.addAll(Worker.getWorkers());
 
 		
 		for(int slotIndex = 0; slotIndex< rotation.length; slotIndex++){
 			fillSlot(slotIndex,heap);
 		}
-	}
+	}*/
 
 
 	/**
@@ -56,7 +77,7 @@ public class Day {
 	 * @param slotIndex index of the rotation to fill
 	 * @param heap the heap from which to select workers
      */
-	void fillSlot(int slotIndex, PriorityQueue<Worker> heap) {
+	/*void fillSlot(int slotIndex, PriorityQueue<Worker> heap) {
 		Worker tempWorker = heap.poll();
 
 		if (tempWorker != null) {
@@ -73,15 +94,15 @@ public class Day {
 			rotation[slotIndex] = null;
 		}
 	}
-
+*/
 
 	/**
-	 * Get this days rotation
+	 * Get this days shifts
 	 *
-	 * @return the days rotation
+	 * @return the days shifts
      */
-	public Worker[] getRotation() {
-		return rotation;
+	public Set<Shift> getShifts() {
+		return shifts;
 	}
 	public int getDate(){
 		return date;

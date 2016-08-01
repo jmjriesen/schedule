@@ -36,4 +36,10 @@ public class Week {
 	public WeekGui getWeekGui(){
 		return weekGui;
 	}
+	public void schedule() {
+		for(Day day : days){
+			day.schedule();
+		}
+		
+	}
 }
