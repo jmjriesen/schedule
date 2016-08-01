@@ -1,12 +1,15 @@
 package gui;
 
 import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import dataManigment.Day;
 import dataManigment.Month;
+import dataManigment.Start;
 import dataManigment.Worker;
 import dataManigment.WorkerInfoHandaler;
 
@@ -44,8 +47,9 @@ public class GuiControl extends JFrame{
 		changePanel(workerMainMenu.getPanel());
 	}
 
-	public void startCalenderMainMenu(Month month) {
-		MonthGui monthGui = new MonthGui(month);
+	public void startCalenderMainMenu() {
+		
+		MonthGui monthGui = new MonthGui(Start.getMonth());
 		changePanel(monthGui.getMonthDesplay());
 	}
 
@@ -70,6 +74,11 @@ public class GuiControl extends JFrame{
 	public void startWorkerAddGui() {
 		WorkerAddGui workerAddGui = new WorkerAddGui();
 		changePanel(workerAddGui.getPanel());
+		
+	}
+
+	public void startDayEditWindow(DayGui dayGui) {
+		changePanel(dayGui.getEditDayPanel());
 		
 	}
 	

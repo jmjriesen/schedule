@@ -33,10 +33,12 @@ public class Start {
 
 		boolean workingOnGUI = true;
 		if (workingOnGUI){
+			
 			// This will call the Start.makeMonth()
 			GuiControl.getInstence().startCalenderSettingsWindow();
 
 		}
+		
 
 
 	}

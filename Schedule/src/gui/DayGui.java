@@ -1,22 +1,57 @@
 package gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import dataManigment.Day;
 
 public class DayGui {
-	private JPanel thumbnailPanel;
+	private JPanel thumbnailPanel = new JPanel();
 	private JButton thumbnailEditButton;
-	private JPanel editDayPanel;
+	
+	private JPanel editDayPanel = new JPanel();
+	private JButton returnButton = new JButton("return");
 	
 	public DayGui(Day day){
 		//inichalis new JPanel and JButton
-		thumbnailPanel = new JPanel();
+		
 		thumbnailEditButton = new JButton();
 		//sets the button up and adds it to the panel
 		thumbnailEditButton.setText(Integer.toString(day.getDate()));
 		thumbnailPanel.add(thumbnailEditButton);
+		thumbnailEditButton.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				GuiControl.getInstence().startDayEditWindow(DayGui.this);
+				
+				
+			}
+			
+		});
+	editDayPanel.add(returnButton);
+	returnButton.addActionListener(new ActionListener(){
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			GuiControl.getInstence().startCalenderMainMenu();
+			
+		}
+		
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	}
 	
 	//get statement
