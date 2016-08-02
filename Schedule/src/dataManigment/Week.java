@@ -5,7 +5,6 @@ import gui.WeekGui;
 
 public class Week {
 	private Day[] days = new Day[7];
-	private WeekGui weekGui;
 
 	public int makeDays(int monthStartsOn) {
 		int lastDayMade = 0;
@@ -14,7 +13,7 @@ public class Week {
 			lastDayMade = i;
 		}
 
-		weekGui = new WeekGui(this);
+		
 		return lastDayMade+1;
 	}
 	public int makeDays(int DateWeekStartsOn, int daysInMonth) {
@@ -27,15 +26,13 @@ public class Week {
 			lastDayMade++;
 			numberOfDaysMade++;
 		}
-		weekGui = new WeekGui(this);
+		
 		return lastDayMade;
 	}
 	public Day[] getDays(){
 		return days;
 	}
-	public WeekGui getWeekGui(){
-		return weekGui;
-	}
+
 	public void schedule() {
 		for(Day day : days){
 			day.schedule();

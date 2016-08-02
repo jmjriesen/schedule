@@ -15,7 +15,7 @@ import java.util.TreeSet;
  * workers assigned to them.
  */
 public class Day {
-	private DayGui dayGui;
+	
 	private int date;
 	private Set<Shift> shifts = new HashSet<Shift>();
 	private Worker[] rotation = new Worker[3];
@@ -30,7 +30,7 @@ public class Day {
 	public Day(int date){
 		this.date = date;
 		
-		dayGui  = new DayGui(this);
+		
 		this.shifts.add(new Shift("HeadGuard",2,6.5,this));
 		this.shifts.add(new Shift("lifeGuard",14,7.5,this));
 		this.shifts.add(new Shift("lifeGuard",2,5.5,this));
@@ -107,7 +107,5 @@ public class Day {
 	public int getDate(){
 		return date;
 	}
-	public DayGui getDayGui(){
-		return dayGui;
-	}
+	
 }

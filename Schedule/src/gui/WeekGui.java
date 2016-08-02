@@ -23,6 +23,14 @@ public class WeekGui {
 	
 	public WeekGui(Week week) {
 		this.week = week;
+		
+		for (int index = 0; index<7; index++){
+			if (week.getDays()[index] != null){
+				daysGui[index] = new DayGui(week.getDays()[index]); 
+			}
+		}
+		
+		
 
 		//JPanal required for nesting GridLayouts
 		thumbnailPanel.setLayout(thumbnailGridLayout);
@@ -30,11 +38,11 @@ public class WeekGui {
 		thumbnailEditButton = new JButton("Week");
 		thumbnailPanel.add(thumbnailEditButton);
 		// adds DayGuis to the panel		
-		for(Day day: week.getDays()){
-			if(day==null){
+		for(DayGui dayGui: daysGui){
+			if(dayGui==null){
 				thumbnailPanel.add(new JLabel());
 			}else{
-				thumbnailPanel.add(day.getDayGui().getThumbnailPanel());
+				thumbnailPanel.add(dayGui.getThumbnailPanel());
 
 			}
 		}

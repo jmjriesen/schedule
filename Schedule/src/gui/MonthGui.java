@@ -11,22 +11,33 @@ import dataManigment.Week;
 
 
 public class MonthGui {
-	WeekGui[] weekGuis;
-	Month month;
+	private Month month;
+	private WeekGui[] weekGuis;
+	
+	
 	private JPanel monthDesplay;
 
 
 	public MonthGui(Month month) {
 		
-
+		//month that is to be despladed
 		this.month = month;
+		
+		//creating Weekguis for each week in month
+		weekGuis = new WeekGui[month.getWeeks().length];
+		for (int index = 0; index<month.getWeeks().length; index++){
+			if (month.getWeeks()[index] != null){
+				weekGuis[index] = new WeekGui(month.getWeeks()[index]); 
+			}
+		}
+		
 		
 		
 		monthDesplay = new JPanel();
-		monthDesplay.setLayout(new GridLayout(month.weeks.length,1));
+		monthDesplay.setLayout(new GridLayout(weekGuis.length,1));
 
-		for (Week week : month.weeks){
-			monthDesplay.add(week.getWeekGui().getThumbnailPanel());
+		for (WeekGui weekgui : weekGuis){
+			monthDesplay.add(weekgui.getThumbnailPanel());
 			
 		}
 

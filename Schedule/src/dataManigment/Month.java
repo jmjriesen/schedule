@@ -3,7 +3,7 @@ package dataManigment;
 import gui.WeekGui;
 
 public class Month {
-	public Week[] weeks;
+	private Week[] weeks;
 
 	public Month(int daysInMonth, int monthStartsOn) {
 		this.createWeeks(daysInMonth,monthStartsOn);
@@ -40,5 +40,8 @@ public class Month {
 		for (Week week: weeks){
 			week.schedule();
 		}
+	}
+	public Week[] getWeeks(){
+		return weeks;
 	}
 }
