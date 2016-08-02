@@ -46,11 +46,11 @@ public class Shift implements Comparable{
 		if (tempWorker != null) {
 			
 			//Checks if worker can work this shift
-			if (tempWorker.canWork(day.getDate())) {
+			if (tempWorker.canWork(this)) {
 				// if so assine the worker
 				slots[slotIndex] = tempWorker;
 				// tells the worker they will be working this shift
-				tempWorker.willWork(day.getDate());
+				tempWorker.willWork(this);
 
 			} else {
 				//recursive call if the worker can't work
@@ -75,6 +75,13 @@ public class Shift implements Comparable{
 		}
 		//if there are no HeadGuards give priority to the longer shift
 		return (int)(otherShift.duration - this.duration);
+	}
+	public int getDate(){
+		return day.getDate();
+	}
+	public double getDuration() {
+		
+		return this.duration;
 	}
 
 

@@ -19,7 +19,7 @@ public class Worker {
 
 	private String symbol;
 	private Set<Integer> requestedOff = new TreeSet<Integer>();
-	private Set<Integer> working = new TreeSet<Integer>();
+	private Set<Shift> working = new TreeSet<Shift>();
 
 	
 
@@ -67,9 +67,9 @@ public class Worker {
 
 
 
-	public void willWork(int date){
-        validDateFilter(date);
-		working.add(date);
+	public void willWork(Shift shift){
+        validDateFilter(shift.getDate());
+		working.add(shift);
 	}
 
 
@@ -78,7 +78,7 @@ public class Worker {
 	 * Get the list of days this worker is currently working
 	 * @return
      */
-	public Set<Integer> getDaysWorking(){
+	public Set<Shift> getDaysWorking(){
 		return working;
 	}
 
@@ -89,10 +89,10 @@ public class Worker {
 	 * @param date
 	 * @return true if available
 	 */
-	public boolean canWork(int date){
-        validDateFilter(date);
+	public boolean canWork(Shift shift){
+        validDateFilter(shift.getDate());
 
-        if (requestedOff.contains(date) || working.contains(date)) {
+        if (requestedOff.contains(shift.getDate()) || working.contains(shift)) {
             return false;
         }
 		return true;
@@ -139,10 +139,20 @@ public class Worker {
              */
 			@Override
 			public int compare(Worker wrk1, Worker wrk2) {
-				return wrk1.getDaysWorking().size() - wrk2.getDaysWorking().size();
+				return (int)(wrk1.calculateHoursWorking() - wrk2.calculateHoursWorking());
 			}
 		};
 	}
+
+	private double calculateHoursWorking() {
+		double hours = 0;
+		for (Shift shift : working){
+			hours +=shift.getDuration();
+		}
+		return hours;
+	}
+
+
 
 	public void clearDaysOff() {
 		requestedOff.clear();
@@ -151,6 +161,7 @@ public class Worker {
 	private void validDateFilter(int date){
 	    if (date < 1 || date > 31)
 	        throw new IndexOutOfBoundsException();
+	    
     }
 	public void remove(){
 		workers.remove(this);

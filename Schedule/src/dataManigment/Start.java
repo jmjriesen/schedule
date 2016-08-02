@@ -36,6 +36,7 @@ public class Start {
 		}else{
 			createMonth(7,0);
 			month.schedule();
+			System.out.println("done");
 		}
 		
 
