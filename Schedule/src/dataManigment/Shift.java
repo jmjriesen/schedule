@@ -76,6 +76,7 @@ public class Shift implements Comparable{
 		//if there are no HeadGuards give priority to the longer shift
 		return (int)(otherShift.duration - this.duration);
 	}
+	
 	public int getDate(){
 		return day.getDate();
 	}
