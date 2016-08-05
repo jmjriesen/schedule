@@ -84,6 +84,13 @@ public class Shift implements Comparable{
 		
 		return this.duration;
 	}
+	public String getWorkerTyp(){
+		return this.workerType;
+	}
+	public Worker[] getSlots() {
+		
+		return this.slots;
+	}
 
 
 }

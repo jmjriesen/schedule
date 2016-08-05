@@ -25,9 +25,10 @@ public class WorkerInfoHandaler {
 			
 			while((line = bufferedReader.readLine()) != null){
 				String[] splitString = line.split(",");
-				Worker worker = new Worker(splitString[0]);
+				//first sysmble second worker Type
+				Worker worker = new Worker(splitString[0],splitString[1]);
 				
-				for(int i= 1; i< splitString.length; i++){
+				for(int i= 2; i< splitString.length; i++){
 					Integer dayOff = Integer.valueOf(splitString[i]);
 					worker.requestOff(dayOff);
 				}

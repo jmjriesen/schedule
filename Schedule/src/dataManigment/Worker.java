@@ -19,15 +19,15 @@ public class Worker {
 
 	private String symbol;
 	private Set<Integer> requestedOff = new TreeSet<Integer>();
-	private Set<Shift> working = new TreeSet<Shift>();
-
+	private Set<Shift> working = new HashSet<Shift>();
+	private String workerType;
 	
 
 	/**
 	 * Sets up worker's symbol
 	 * @param symbol
 	 */
-	public Worker(String symbol){
+	public Worker(String symbol,String workerType){
 		
 		if (symbol == null) {
             throw new NullPointerException("Worker symbol cannot be null");
@@ -37,6 +37,7 @@ public class Worker {
         }
 
 		this.symbol = symbol;
+		this.workerType = workerType;
 		workers.add(this);
 		
 	}
@@ -89,12 +90,22 @@ public class Worker {
 	 * @param date
 	 * @return true if available
 	 */
-	public boolean canWork(Shift shift){
-        validDateFilter(shift.getDate());
+	public boolean canWork(Shift testShift){
+		
+		validDateFilter(testShift.getDate());
+		if(testShift.getWorkerTyp().equals("HeadGuard") && !this.workerType.equals("HeadGuard")){
+			return false;
+		}
 
-        if (requestedOff.contains(shift.getDate()) || working.contains(shift)) {
-            return false;
-        }
+
+		if (requestedOff.contains(testShift.getDate())) {
+			return false;
+		}
+		for(Shift workeringShift :this.getDaysWorking()){
+			if(workeringShift.getDate() == testShift.getDate()){
+				return false;
+			}
+		}
 		return true;
 	}
 

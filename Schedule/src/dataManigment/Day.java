@@ -31,9 +31,9 @@ public class Day {
 		this.date = date;
 		
 		
-		this.shifts.add(new Shift("HeadGuard",2,6.5,this));
-		this.shifts.add(new Shift("lifeGuard",14,7.5,this));
-		this.shifts.add(new Shift("lifeGuard",2,5.5,this));
+		this.shifts.add(new Shift("HeadGuard",6,6.5,this));
+		this.shifts.add(new Shift("LifeGuard",6,6.5,this));
+		
 		
 		
 	}
