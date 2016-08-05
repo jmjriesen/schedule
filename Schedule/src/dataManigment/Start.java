@@ -8,19 +8,14 @@ import java.util.PriorityQueue;
 public class Start {
 	
 	// will read in workers for text fill
-	public static WorkerInfoHandaler handaler;
+	
 	private static Month month;
 	
 
 	public static void main(String [ ] args){
 
 		
-		//loudes workers
-		// Initiates workerInfoHandaler
-		handaler = new WorkerInfoHandaler();
-		//Reads in staff from text document
-		handaler.readInStaff();
-		// deploy workerMainMenu
+		WorkerInfoHandaler.getInstance().readInStaff();
 
 		boolean workingOnGUI = true;
 		if (workingOnGUI){

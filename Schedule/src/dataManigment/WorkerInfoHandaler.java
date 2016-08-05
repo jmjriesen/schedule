@@ -9,8 +9,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//singliet class
 public class WorkerInfoHandaler {
+	private static WorkerInfoHandaler workerInfoHandaler;
+	
+	public static WorkerInfoHandaler getInstance(){
+		
+		if (workerInfoHandaler==null){
+			workerInfoHandaler = new WorkerInfoHandaler();
+		}
+		
+		return workerInfoHandaler;
+	}
+	private WorkerInfoHandaler(){
+		
+	}
+	
+	
+	
+	
+	
 	private String fileName= "WorkerInfo.txt";
 		
 		
