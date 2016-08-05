@@ -6,13 +6,13 @@ public class Shift implements Comparable{
 	// the day the shifts Belong to 
 	private Day day;
 	// Worker type is used in setting priority during worker assignment
-	private String workerType;
+	private int workerType;
 	//number of workers to be employed during this shift
 	private Worker[] slots;
 	// used in determining shift priority and will be used to determine how many hours someone has worked
 	private double duration;
 
-	public Shift (String workerType, int numberOfWorkers,double duration,Day day){
+	public Shift (int workerType, int numberOfWorkers,double duration,Day day){
 		// inputs from the constructor are transcribed to class variables
 		this.workerType = workerType;
 		this.slots= new Worker[numberOfWorkers];
@@ -67,9 +67,9 @@ public class Shift implements Comparable{
 		//cast object to Shift, Shifts should only ever need to be compared to other shifts
 		Shift otherShift = (Shift) arg0;
 		// if Other worker is for HeadGuards and this is not give OtherWorker priority
-		if (otherShift.workerType.equals("HeadGuard")&& !this.workerType.equals("HeadGuard")){
+		if (otherShift.workerType == Worker.HeadGuard && ! (this.workerType == Worker.HeadGuard)){
 			return 1;
-		}else if(!otherShift.workerType.equals("HeadGuard")&& this.workerType.equals("HeadGuard")){
+		}else if(!(otherShift.workerType == Worker.HeadGuard)&& this.workerType == Worker.HeadGuard){
 			// if this is HeadGuard and the Other Worker is not give this priority
 			return-1;
 		}
@@ -84,7 +84,7 @@ public class Shift implements Comparable{
 		
 		return this.duration;
 	}
-	public String getWorkerTyp(){
+	public int getWorkerTyp(){
 		return this.workerType;
 	}
 	public Worker[] getSlots() {

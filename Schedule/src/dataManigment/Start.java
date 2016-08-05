@@ -26,50 +26,11 @@ public class Start {
 		}else{
 			createMonth(7,0);
 			month.schedule();
-			System.out.println("done");
-
-			for (Week week : month.getWeeks()){
-				for(Day day:week.getDays()){
-					if(day!=null){
-						System.out.println(day.getDate());
-
-
-
-
-
-
-						PriorityQueue<Shift> shiftHeap = new PriorityQueue<Shift>(day.getShifts());
-						Shift shift = shiftHeap.poll();
-						
-						
-						while (shift != null){
-
-							
-
-							if(shift!= null){
-							System.out.println(shift.getWorkerTyp());
-							
-							
-								for(Worker worker:shift.getSlots()){
-									if (worker!=null){
-										System.out.println(worker.getSymbol());
-									}
-								}
-								
-							shift = shiftHeap.poll();
-							}
-						}
-					}
-				}
-			}
 		}
 
-		for(Worker worker:Worker.getWorkers()){
-			System.out.println(worker.getSymbol());
-			for (Shift shift : worker.getDaysWorking()){
-				System.out.println(shift.getDate());
-			}
-		}
+			
+
+		
 	}
 
 	public static void createMonth(int daysInMonth, int monthStartsOn){

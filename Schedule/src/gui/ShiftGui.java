@@ -15,7 +15,7 @@ public class ShiftGui {
 		this.shift = shift;
 		
 		
-		panel.add(new JLabel(shift.getWorkerTyp()));
+		panel.add(new JLabel(Worker.workerTypeTranslater(shift.getWorkerTyp())));
 		panel.add(new JLabel(Double.toString(shift.getDuration())));
 		panel.setLayout(new GridLayout(shift.getSlots().length +2,1));
 		for(Worker worker:shift.getSlots()){

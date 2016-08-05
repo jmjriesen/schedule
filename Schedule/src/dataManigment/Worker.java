@@ -20,14 +20,25 @@ public class Worker {
 	private String symbol;
 	private Set<Integer> requestedOff = new TreeSet<Integer>();
 	private Set<Shift> working = new HashSet<Shift>();
-	private String workerType;
+	
+	public static int HeadGuard = 0;
+	public static int LifeGuard = 1;
+	public static String workerTypeTranslater(int workerType){
+		switch ((int)workerType){
+		case 0: return "HeadGuard";
+		case 1: return "LifeGuard";
+		}
+		return "Unsuported Type";
+	}
+
+	private int workerType;
 	
 
 	/**
 	 * Sets up worker's symbol
 	 * @param symbol
 	 */
-	public Worker(String symbol,String workerType){
+	public Worker(String symbol,int workerType){
 		
 		if (symbol == null) {
             throw new NullPointerException("Worker symbol cannot be null");
@@ -92,21 +103,33 @@ public class Worker {
 	 */
 	public boolean canWork(Shift testShift){
 		
+		boolean canwork = true;
 		validDateFilter(testShift.getDate());
-		if(testShift.getWorkerTyp().equals("HeadGuard") && !this.workerType.equals("HeadGuard")){
-			return false;
+		//Shift is for head Guards
+		if(testShift.getWorkerTyp()== Worker.HeadGuard){
+			if (this.workerType != Worker.HeadGuard){
+				canwork = false;
+			}
+		}
+		
+		//Shift is for LifeGuards this includes Head Guards
+		if(testShift.getWorkerTyp()==Worker.LifeGuard){
+			//LifeGuard or HeadGuard
+			if(this.workerType != Worker.HeadGuard && this.workerType != Worker.LifeGuard)
+				canwork = false;
 		}
 
 
 		if (requestedOff.contains(testShift.getDate())) {
-			return false;
+			canwork = false;
 		}
+		
 		for(Shift workeringShift :this.getDaysWorking()){
 			if(workeringShift.getDate() == testShift.getDate()){
-				return false;
+				canwork  = false;
 			}
 		}
-		return true;
+		return canwork;
 	}
 
 
@@ -176,5 +199,13 @@ public class Worker {
     }
 	public void remove(){
 		workers.remove(this);
+	}
+
+
+
+	public int getType() {
+		
+		return this.workerType;
+		
 	}
 }

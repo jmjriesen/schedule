@@ -44,7 +44,7 @@ public class WorkerAddGui{
 				//the .equals has to be used because it doesn't like the == apparently
 				if (!(name.getText().equals("name")) ){
 					
-					Worker worker = new Worker(name.getText(),"lifeGuard");
+					Worker worker = new Worker(name.getText(),Worker.LifeGuard);
 					
 					
 					String userInput = requestDaysOff.getText();

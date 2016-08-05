@@ -44,7 +44,8 @@ public class WorkerInfoHandaler {
 			while((line = bufferedReader.readLine()) != null){
 				String[] splitString = line.split(",");
 				//first sysmble second worker Type
-				Worker worker = new Worker(splitString[0],splitString[1]);
+				
+				Worker worker = new Worker(splitString[0],Integer.valueOf(splitString[1]));
 				
 				for(int i= 2; i< splitString.length; i++){
 					Integer dayOff = Integer.valueOf(splitString[i]);
@@ -78,7 +79,8 @@ public class WorkerInfoHandaler {
 				for(Worker worker : Worker.getWorkers()){
 					output += worker.getSymbol();
 					output += ",";
-					output +="LifeGuard";
+					output += Integer.toString(worker.getType());
+					output +=",";
 					for (int dayRequestedOff : worker.getRequestedOff()){
 						output += dayRequestedOff;
 						output += ",";
