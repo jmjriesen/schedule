@@ -72,6 +72,7 @@ public class CalenderSettingsWindow{
 				try{
 					Integer daysInMonth = Integer.valueOf(numberOfDaysTextField.getText());
 					Start.createMonth(daysInMonth, monthStartsOn);
+					Start.getMonth().schedule();
 					GuiControl.getInstence().startCalenderMainMenu();
 				}catch(NumberFormatException nfe){
 

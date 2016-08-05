@@ -39,7 +39,7 @@ public class GuiControl extends JFrame{
 	 * staff list to a text fill for fucher use
 	 */
 	void saveStaff(){
-		handaler.wrightOutStaff();
+		Start.handaler.wrightOutStaff();
 
 	}
 	public void startWorkerMainMenu(){

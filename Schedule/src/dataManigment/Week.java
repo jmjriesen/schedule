@@ -35,7 +35,9 @@ public class Week {
 
 	public void schedule() {
 		for(Day day : days){
+			if (day!=null){
 			day.schedule();
+			}
 		}
 		
 	}

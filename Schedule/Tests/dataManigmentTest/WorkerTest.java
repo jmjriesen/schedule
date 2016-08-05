@@ -16,7 +16,7 @@ public class WorkerTest {
 
     @Before
     public void setup(){
-        testWorker = new Worker("@");
+        testWorker = new Worker("@","Lifeguard");
     }
 
 

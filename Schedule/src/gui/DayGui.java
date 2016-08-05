@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import dataManigment.Day;
+import dataManigment.Shift;
 
 public class DayGui {
 	private JPanel thumbnailPanel = new JPanel();
@@ -32,6 +33,9 @@ public class DayGui {
 			}
 			
 		});
+		for(Shift shift :day.getShifts()){
+			editDayPanel.add(new ShiftGui(shift).getPanel()); 
+		}
 	editDayPanel.add(returnButton);
 	returnButton.addActionListener(new ActionListener(){
 

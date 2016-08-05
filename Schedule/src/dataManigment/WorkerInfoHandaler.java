@@ -60,6 +60,7 @@ public class WorkerInfoHandaler {
 				for(Worker worker : Worker.getWorkers()){
 					output += worker.getSymbol();
 					output += ",";
+					output +="LifeGuard";
 					for (int dayRequestedOff : worker.getRequestedOff()){
 						output += dayRequestedOff;
 						output += ",";

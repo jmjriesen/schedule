@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
 public class Start {
 	
 	// will read in workers for text fill
-	static WorkerInfoHandaler handaler;
+	public static WorkerInfoHandaler handaler;
 	private static Month month;
 	
 
@@ -22,11 +22,11 @@ public class Start {
 		handaler.readInStaff();
 		// deploy workerMainMenu
 
-		boolean workingOnGUI = false;
+		boolean workingOnGUI = true;
 		if (workingOnGUI){
 			
 			// This will call the Start.makeMonth()
-			GuiControl.getInstence().startCalenderSettingsWindow();
+			GuiControl.getInstence().startWorkerMainMenu();
 
 		}else{
 			createMonth(7,0);
