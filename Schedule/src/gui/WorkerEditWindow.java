@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,7 +25,7 @@ public class WorkerEditWindow{
 	//text feald to entter dayoff requests into
 	private  final JTextField daysOffInput = new JTextField();
 	// button to add day request to worker list
-	private JButton addButton = new JButton();
+	private JButton updateButton = new JButton();
 	// button to clear dayoff request list
 	private JButton clearAllDays = new JButton();
 	// button to deleat worker
@@ -32,6 +33,7 @@ public class WorkerEditWindow{
 	// button to return user to a new instance of the WorkerMainGui
 	private JButton returnButton = new JButton();
 	
+	private JCheckBox isHeadGuard = new JCheckBox("HeadGuard");
 	//self reforenchal terms needed for the buttons to locat informarion
 	
 	
@@ -56,7 +58,7 @@ public class WorkerEditWindow{
 	void updateElements(){
 		workerName.setText(worker.getSymbol());
 		daysOff.setText(worker.getRequestedOff().toString());	
-		addButton.setText("add dates");
+		updateButton.setText("update");
 		clearAllDays.setText("clear days");
 		DELEATEButton.setText("DELEATE");
 		returnButton.setText("return");
@@ -68,8 +70,13 @@ public class WorkerEditWindow{
 		panel.add(workerName);
 		panel.add(daysOff);
 		panel.add(daysOffInput);
-		panel.add(addButton);
+		panel.add(updateButton);
 		panel.add(clearAllDays);
+		if(worker.getType() == Worker.HeadGuard){
+			isHeadGuard.setSelected(true);
+		}
+		panel.add(isHeadGuard);
+		
 		panel.add(DELEATEButton);
 		panel.add(returnButton);
 
@@ -83,16 +90,25 @@ public class WorkerEditWindow{
 	 */
 	void addButtonActions(){
 		// prosese and adds days off from text feild
-		addButton.addActionListener(new ActionListener(){
+		updateButton.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String userInput = daysOffInput.getText();
 				String [] splitArray = userInput.split(",");
 				for(String date : splitArray){
+					try{
 					Integer tempInt = Integer.valueOf(date);	
-
 					worker.requestOff(tempInt);
+					}catch(NumberFormatException nfe){
+
+					}
+					
+					if(isHeadGuard.isSelected()){
+						worker.setType(Worker.HeadGuard);
+					}else{
+						worker.setType(Worker.LifeGuard);
+					}
 					updateElements();
 				}
 			}

@@ -1,11 +1,13 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import dataManigment.Day;
 import dataManigment.Month;
@@ -14,10 +16,11 @@ import dataManigment.Worker;
 import dataManigment.WorkerInfoHandaler;
 
 public class GuiControl extends JFrame{
+	private JScrollPane scroll ;
 	private static GuiControl guiControl;
 	
 	// will read in workers for text fill
-	WorkerInfoHandaler handaler;
+	
 
 	public static GuiControl getInstence(){
 		if (guiControl == null){
@@ -29,9 +32,9 @@ public class GuiControl extends JFrame{
 	 private  GuiControl(){
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		setLayout(new BorderLayout());
 		setVisible(true);
-		
+		setSize(300,600);
 		
 	}
 	/*
@@ -61,8 +64,18 @@ public class GuiControl extends JFrame{
 	}
 	private void changePanel(JPanel newPanel){
 		this.getContentPane().removeAll();
-		this.add(newPanel);
+		scroll = new JScrollPane(newPanel);
+		add(scroll,BorderLayout.WEST);
+		//this.add(newPanel);
 		this.pack();
+		//resizes widow if it is to large for the pi screen
+		if(this.getSize().getHeight()>400){
+			setSize(this.getWidth(),400);
+			
+		}
+		
+		
+		
 		this.revalidate();
 	}
 	public void startWorkerEditWindow(Worker worker) {

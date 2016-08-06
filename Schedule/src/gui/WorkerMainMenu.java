@@ -43,7 +43,7 @@ public class WorkerMainMenu{
 		
 		//creats a gruid layout largenofe to encompus all worker information 
 		//and some genaral purpus buttons
-		panel.setLayout(new GridLayout(Worker.getWorkers().size() + 1 ,3));
+		panel.setLayout(new GridLayout(Worker.getWorkers().size() + 1 ,4));
 		
 		
 		/*
@@ -62,6 +62,8 @@ public class WorkerMainMenu{
 			JLabel DaysOff= new JLabel(worker.getRequestedOff().toString());
 			panel.add(DaysOff);
 			
+			JLabel workerType = new JLabel(Worker.workerTypeTranslater(worker.getType()));
+			panel.add(workerType);
 			JButton editButton = new JButton("edit");
 			panel.add(editButton);
 			//assines button listener that starts the edit window

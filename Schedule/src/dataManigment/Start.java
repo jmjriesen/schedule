@@ -24,8 +24,12 @@ public class Start {
 			GuiControl.getInstence().startWorkerMainMenu();
 
 		}else{
-			createMonth(7,0);
+			createMonth(31,0);
 			month.schedule();
+			for(Worker worker: Worker.getWorkers()){
+				System.out.println(worker.getSymbol());
+				System.out.println(worker.calculateHoursWorking());
+			}
 		}
 
 			

@@ -178,7 +178,7 @@ public class Worker {
 		};
 	}
 
-	private double calculateHoursWorking() {
+	public double calculateHoursWorking() {
 		double hours = 0;
 		for (Shift shift : working){
 			hours +=shift.getDuration();
@@ -206,6 +206,13 @@ public class Worker {
 	public int getType() {
 		
 		return this.workerType;
+		
+	}
+
+
+
+	public void setType(int workerType) {
+		this.workerType = workerType;
 		
 	}
 }
