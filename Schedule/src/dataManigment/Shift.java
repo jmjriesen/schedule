@@ -29,7 +29,12 @@ public class Shift implements Comparable{
 
 		// Iterates throw all slots
 		for(int slotIndex = 0; slotIndex< slots.length; slotIndex++){
-			fillSlot(slotIndex,heap);
+			// only fills slot if it is open
+			if(this.slots[slotIndex]==null){
+
+
+				fillSlot(slotIndex,heap);
+			}
 		}
 
 	}

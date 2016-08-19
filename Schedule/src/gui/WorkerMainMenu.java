@@ -25,7 +25,7 @@ public class WorkerMainMenu{
 	private JButton addWorkerButton = new JButton("Add worker");
 	private JButton saveButton = new JButton("save");
 	private JButton nextButton = new JButton("Next");
-	private JPanel panel = new JPanel();
+	private JPanel allWorkersPanel = new JPanel();
 
 	//needed for buttons to interact with this window
 	
@@ -39,11 +39,12 @@ public class WorkerMainMenu{
  */
 	public WorkerMainMenu(){
 		
-		//basik window mantinice
+		
+		
 		
 		//creats a gruid layout largenofe to encompus all worker information 
 		//and some genaral purpus buttons
-		panel.setLayout(new GridLayout(Worker.getWorkers().size() + 1 ,4));
+		allWorkersPanel.setLayout(new GridLayout(Worker.getWorkers().size() + 1 ,4));
 		
 		
 		/*
@@ -57,15 +58,16 @@ public class WorkerMainMenu{
 					
 			
 			JLabel NameLabel = new JLabel(worker.getSymbol());
-			panel.add(NameLabel);
+			allWorkersPanel.add(NameLabel);
 			
 			JLabel DaysOff= new JLabel(worker.getRequestedOff().toString());
-			panel.add(DaysOff);
+			allWorkersPanel.add(DaysOff);
 			
 			JLabel workerType = new JLabel(Worker.workerTypeTranslater(worker.getType()));
-			panel.add(workerType);
+			allWorkersPanel.add(workerType);
 			JButton editButton = new JButton("edit");
-			panel.add(editButton);
+			allWorkersPanel.add(editButton);
+			
 			//assines button listener that starts the edit window
 			editButton.addActionListener(new ActionListener(){
 
@@ -80,9 +82,9 @@ public class WorkerMainMenu{
 		}
 		
 		// placing buttons not relevant to a specific worker
-		panel.add(addWorkerButton);
-		panel.add(saveButton);
-		panel.add(nextButton);
+		allWorkersPanel.add(addWorkerButton);
+		allWorkersPanel.add(saveButton);
+		allWorkersPanel.add(nextButton);
 		addButtonActions();
 		
 		}
@@ -122,6 +124,6 @@ public class WorkerMainMenu{
 		});
 	}
 	JPanel getPanel(){
-		return panel;
+		return allWorkersPanel;
 	}
 }

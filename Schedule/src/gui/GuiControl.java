@@ -72,16 +72,13 @@ public class GuiControl extends JFrame{
 		if(this.getSize().getHeight()>400){
 			setSize(this.getWidth(),400);
 			
-		}
-		
-		
-		
+		}		
 		this.revalidate();
+		
 	}
 	public void startWorkerEditWindow(Worker worker) {
 		WorkerEditWindow workerEditWindow = new WorkerEditWindow(worker);
-		changePanel(workerEditWindow.getPanel());
-		
+		this.changePanel(workerEditWindow.getPanel());
 		
 	}
 	public void startWorkerAddGui() {
@@ -94,5 +91,7 @@ public class GuiControl extends JFrame{
 		changePanel(dayGui.getEditDayPanel());
 		
 	}
+
+	
 	
 }

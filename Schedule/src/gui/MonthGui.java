@@ -14,14 +14,14 @@ import dataManigment.Week;
 
 
 public class MonthGui {
-	private Month month;
+	protected Month month;
 	private WeekGui[] weekGuis;
 
 
 	private JPanel monthDesplay;
 
 
-	public MonthGui(Month month) {
+	public MonthGui(final Month month) {
 
 		//month that is to be despladed
 		this.month = month;
@@ -52,6 +52,25 @@ public class MonthGui {
 			monthDesplay.add(weekgui.getThumbnailPanel());
 
 		}
+		JButton sheduleButton = new JButton("Shedule");
+		
+		monthDesplay.add(sheduleButton);
+		
+		
+		
+		sheduleButton.addActionListener(new ActionListener(){
+			
+			
+			@Override
+			public  void actionPerformed(ActionEvent arg0) {
+				
+				month.schedule();
+				
+				
+			}
+			
+		});
+		
 
 	}
 

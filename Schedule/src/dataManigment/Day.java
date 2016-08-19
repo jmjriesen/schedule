@@ -59,42 +59,7 @@ public class Day {
 		}
 	}
 	
-		/*PriorityQueue<Worker> heap = new PriorityQueue<>(Worker.getWorkers().size(), Worker.getDaysComparater());
-		heap.addAll(Worker.getWorkers());
-
-		
-		for(int slotIndex = 0; slotIndex< rotation.length; slotIndex++){
-			fillSlot(slotIndex,heap);
-		}
-	}*/
-
-
-	/**
-	 * Select and assign a worker to work for a given rotation. A worker will be chosen
-	 * to work based on if they requested a day off and on if they have already worked
-	 * more hours than other workers.
-	 *
-	 * @param slotIndex index of the rotation to fill
-	 * @param heap the heap from which to select workers
-     */
-	/*void fillSlot(int slotIndex, PriorityQueue<Worker> heap) {
-		Worker tempWorker = heap.poll();
-
-		if (tempWorker != null) {
-
-			if (tempWorker.canWork(date)) {
-				rotation[slotIndex] = tempWorker;
-				tempWorker.willWork(date);
-
-			} else {
-				fillSlot(slotIndex, heap);
-			}
-			heap.add(tempWorker);
-		} else {
-			rotation[slotIndex] = null;
-		}
-	}
-*/
+	
 
 	/**
 	 * Get this days shifts

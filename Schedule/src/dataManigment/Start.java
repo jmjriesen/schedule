@@ -24,11 +24,12 @@ public class Start {
 			GuiControl.getInstence().startWorkerMainMenu();
 
 		}else{
-			createMonth(31,0);
+			createMonth(10,0);
 			month.schedule();
 			for(Worker worker: Worker.getWorkers()){
 				System.out.println(worker.getSymbol());
-				System.out.println(worker.calculateHoursWorking());
+				for(Shift shift:worker.getDaysWorking()){
+				System.out.print(shift.getDate()+",");}
 			}
 		}
 
